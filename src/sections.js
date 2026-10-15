@@ -8,7 +8,7 @@ import { t, LANGS, getLang, setLang } from "./i18n.js";
 import { useAchievementCount, useUnlockOnView } from "./achievements.js";
 import {
   profile, about, career, achievements, workProjects, passionProjects, skills, contact, github,
-  lifeIntro, story, scenes, hobbies, elsewhere, guestbook,
+  lifeIntro, story, scenes, hobbies, elsewhere, guestbook, analytics,
 } from "./data.js";
 
 // The two pages. Each has its own file so tabs are real, shareable URLs.
@@ -162,7 +162,26 @@ export function LifeHero() {
   </section>`;
 }
 
+// Total unique visitors from GoatCounter's public counter. Null until it loads, and stays
+// null if the counter setting is off or the request is blocked, so the stat stays hidden.
+function useVisitorCount(on) {
+  const [count, setCount] = useState(null);
+  useEffect(() => {
+    if (!on || !analytics.goatcounter) return;
+    let alive = true;
+    fetch(`https://${analytics.goatcounter}.goatcounter.com/counter/TOTAL.json`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (alive && d && d.count) setCount(String(d.count).trim()); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, [on]);
+  return count;
+}
+
 export function About({ id = "about", index = "01", label = "About", data = about, cta }) {
+  useReveal(); // the visitor stat arrives after first render and needs revealing too
+  const visitors = useVisitorCount(data.stats.some((s) => s.visitors));
+  const stats = data.stats.filter((s) => (s.visitors ? visitors : true));
   return html`<section id=${id} className="section">
     <${SectionHead} index=${index} label=${t(label)} title=${t(data.heading)} />
     <div className="about-grid">
@@ -178,8 +197,8 @@ export function About({ id = "about", index = "01", label = "About", data = abou
       <div className="about-text">
         ${data.paragraphs.map((p, i) => html`<p key=${i} data-reveal style=${{ "--d": i * 90 + "ms" }}>${t(p)}</p>`)}
         <div className="stats">
-          ${data.stats.map((s, i) => html`<div key=${i} className="stat glass" data-reveal style=${{ "--d": i * 70 + "ms" }}>
-            <div className="stat-v">${s.value}</div><div className="stat-l">${t(s.label)}</div>
+          ${stats.map((s, i) => html`<div key=${i} className="stat glass" data-reveal style=${{ "--d": i * 70 + "ms" }}>
+            <div className="stat-v">${s.visitors ? visitors : s.value}</div><div className="stat-l">${t(s.label)}</div>
           </div>`)}
         </div>
         ${cta && html`<a className="link cross-link" href=${withLang(cta.href)} data-reveal>${t(cta.label)} <${Icon} name="arrow" size=${14} /></a>`}

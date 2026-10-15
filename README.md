@@ -49,6 +49,7 @@ The translations were written by AI, so it's worth asking a native speaker to sk
 1. Sign up at https://www.goatcounter.com (free) and choose a code, e.g. `chentzer`.
 2. Set `analytics.goatcounter = "chentzer"` in `src/data.js`.
 3. See visits at `https://chentzer.goatcounter.com`: unique visitors, pages, countries, referrers. No cookies, no consent banner needed.
+4. For the **People who've visited** stat on the Life page: in GoatCounter go to **Settings** and tick **Allow adding visitor counts on your website**, then save. Until then the stat stays hidden.
 
 ## Link-preview image
 

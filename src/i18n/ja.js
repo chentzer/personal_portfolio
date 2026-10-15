@@ -188,6 +188,7 @@ export default {
   "Anime episodes watched": "視聴したアニメの話数",
   "Manga chapters read": "読んだマンガの話数",
   "Countries visited": "訪れた国",
+  "People who've visited": "このサイトの訪問者",
 
   // ── Story ──
   "The moments that shaped me.": "今の私をつくった瞬間。",

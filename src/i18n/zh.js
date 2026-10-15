@@ -188,6 +188,7 @@ export default {
   "Anime episodes watched": "看过的动画集数",
   "Manga chapters read": "读过的漫画话数",
   "Countries visited": "去过的国家",
+  "People who've visited": "来访人数",
 
   // ── Story ──
   "The moments that shaped me.": "塑造我的那些时刻。",

@@ -223,6 +223,9 @@ export const lifeIntro = {
     { value: "4,700+", label: "Manga chapters read" },
     // Counts the countries in `travels` below, so it updates when you add places.
     { label: "Countries visited", get value() { return String(new Set(travels.map((t) => t.country)).size); } },
+    // Live count of unique visitors to the whole site, from GoatCounter (`analytics` below).
+    // Hidden until "Allow adding visitor counts on your website" is ticked in GoatCounter's settings.
+    { label: "People who've visited", visitors: true },
   ],
 };
 

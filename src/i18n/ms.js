@@ -188,6 +188,7 @@ export default {
   "Anime episodes watched": "Episod anime ditonton",
   "Manga chapters read": "Bab manga dibaca",
   "Countries visited": "Negara dilawati",
+  "People who've visited": "Pelawat laman ini",
 
   // ── Story ──
   "The moments that shaped me.": "Detik-detik yang membentuk diri saya.",
