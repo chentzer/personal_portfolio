@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Link preview image generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #111; color: #ccc; font: 14px system-ui; padding: 20px; }
+    canvas { width: 600px; height: 315px; border: 1px solid #333; display: block; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <!-- Draws the 1200x630 link-preview image and saves it to assets/og-image.jpg. Needs tools/serve.py running. -->
+  <canvas id="c" width="1200" height="630"></canvas>
+  <div id="status">Drawing…</div>
+  <script type="module">
+    import { profile, site } from "../src/data.js";
+
+    const c = document.getElementById("c");
+    const g = c.getContext("2d");
+    const W = 1200, H = 630;
+
+    await document.fonts.load("700 80px 'Space Grotesk'");
+    await document.fonts.load("400 24px 'Space Grotesk'");
+    await document.fonts.load("500 18px 'JetBrains Mono'");
+
+    // Background
+    g.fillStyle = "#000"; g.fillRect(0, 0, W, H);
+    const bg = g.createRadialGradient(260, 60, 0, 260, 60, 900);
+    bg.addColorStop(0, "#0f1622"); bg.addColorStop(1, "#000");
+    g.fillStyle = bg; g.fillRect(0, 0, W, H);
+
+    // Faint grid
+    g.strokeStyle = "rgba(255,255,255,0.045)"; g.lineWidth = 1;
+    for (let x = 0; x <= W; x += 60) { g.beginPath(); g.moveTo(x + 0.5, 0); g.lineTo(x + 0.5, H); g.stroke(); }
+    for (let y = 0; y <= H; y += 60) { g.beginPath(); g.moveTo(0, y + 0.5); g.lineTo(W, y + 0.5); g.stroke(); }
+
+    // Particle sphere (Fibonacci points, tilted, front half brighter)
+    const cx = 985, cy = 315, R = 195, N = 2400, golden = Math.PI * (3 - Math.sqrt(5));
+    const tilt = 0.35, spin = 0.6;
+    const glow = g.createRadialGradient(cx, cy, R * 0.6, cx, cy, R * 1.5);
+    glow.addColorStop(0, "rgba(188,215,255,0.10)"); glow.addColorStop(1, "rgba(188,215,255,0)");
+    g.fillStyle = glow; g.fillRect(cx - R * 1.6, cy - R * 1.6, R * 3.2, R * 3.2);
+    for (let i = 0; i < N; i++) {
+      const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), th = golden * i + spin;
+      let x = Math.cos(th) * r, z = Math.sin(th) * r, yy = y;
+      const y2 = yy * Math.cos(tilt) - z * Math.sin(tilt), z2 = yy * Math.sin(tilt) + z * Math.cos(tilt);
+      const wob = 1 + 0.05 * Math.sin(x * 6 + y2 * 4);
+      const px = cx + x * R * wob, py = cy - y2 * R * wob;
+      const a = z2 > 0 ? 0.35 + 0.65 * z2 : 0.08;
+      g.fillStyle = `rgba(${200 + 20 * z2 | 0}, ${215 + 10 * z2 | 0}, 255, ${a})`;
+      g.beginPath(); g.arc(px, py, z2 > 0 ? 1.6 + z2 : 1, 0, Math.PI * 2); g.fill();
+    }
+    // Orbit rings
+    g.strokeStyle = "rgba(255,255,255,0.16)"; g.lineWidth = 1.2;
+    [[1.55, 0.32, -0.35], [1.8, 0.22, 0.25]].forEach(([s, f, rot]) => {
+      g.beginPath(); g.ellipse(cx, cy, R * s, R * s * f, rot, 0, Math.PI * 2); g.stroke();
+    });
+    g.fillStyle = "#dfeaff";
+    g.beginPath(); g.arc(cx + R * 1.5, cy - 60, 4, 0, Math.PI * 2); g.fill();
+
+    // Monogram
+    g.strokeStyle = "rgba(255,255,255,0.25)"; g.lineWidth = 1.5;
+    g.beginPath(); g.roundRect(80, 72, 64, 64, 16); g.stroke();
+    g.fillStyle = "#eef1f6"; g.font = "500 20px 'JetBrains Mono'"; g.textAlign = "center"; g.textBaseline = "middle";
+    g.fillText(profile.initials, 112, 105);
+    g.textAlign = "left"; g.textBaseline = "alphabetic";
+
+    // Status pill
+    g.fillStyle = "#7dffb3"; g.beginPath(); g.arc(176, 105, 6, 0, Math.PI * 2); g.fill();
+    g.fillStyle = "#8b919c"; g.font = "400 18px 'JetBrains Mono'"; g.fillText("SOFTWARE ENGINEER · " + profile.location.toUpperCase(), 194, 111);
+
+    // Name with chrome gradient
+    const chrome = g.createLinearGradient(0, 210, 0, 300);
+    chrome.addColorStop(0, "#ffffff"); chrome.addColorStop(0.5, "#c9ced6"); chrome.addColorStop(1, "#8a909a");
+    g.fillStyle = chrome; g.font = "700 92px 'Space Grotesk'";
+    g.fillText(profile.name, 76, 300);
+
+    // Tagline, wrapped
+    g.fillStyle = "#b9bec8"; g.font = "400 28px 'Space Grotesk'";
+    const words = profile.tagline.split(" "); let line = "", y = 372;
+    for (const w of words) {
+      const test = line ? line + " " + w : w;
+      if (g.measureText(test).width > 640) { g.fillText(line, 80, y); line = w; y += 40; }
+      else line = test;
+    }
+    if (line) g.fillText(line, 80, y);
+
+    // URL
+    g.fillStyle = "#bcd7ff"; g.font = "500 20px 'JetBrains Mono'";
+    g.fillText(site.url.replace(/^https?:\/\//, "").replace(/\/$/, ""), 80, 560);
+
+    // Save to assets/og-image.png through the dev server.
+    const blob = await new Promise((r) => c.toBlob(r, "image/jpeg", 0.9));
+    const res = await fetch("/__save/og-image.jpg", { method: "POST", body: blob });
+    document.getElementById("status").textContent = res.ok ? `Saved assets/og-image.jpg (${Math.round(blob.size / 1024)} KB)` : "Save failed: " + res.status;
+  </script>
+</body>
+</html>
