@@ -66,8 +66,8 @@ To redraw it after changing your name, title or tagline: start `py tools/serve.p
 - [x] Split into Career (main) and Life pages
 - [x] Career history from LinkedIn (Maybank, Boost, Ant International, ENTIIS)
 - [ ] ENTIIS: one line on what you work on
-- [ ] Résumé PDF in `assets/` for the download button
-- [ ] Company Projects: expand into real project cards from the résumé
+- [x] Résumé PDF in `assets/` for the download button (March 2026 version; swap in a newer one that includes ENTIIS when ready)
+- [x] Company Projects: one card per project from the résumé
 - [ ] Top 3: add your 2025 songs from Spotify Wrapped (games are filled in)
 - [ ] Travel globe: add every place you've been to `travels` in `src/data.js`
 - [ ] Fill remaining `TODO`s (your photo, concert photos, scout years, childhood story)

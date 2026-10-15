@@ -62,6 +62,7 @@ export default {
   "Nov 2022 – Nov 2024": "2022年11月 – 2024年11月",
   "Sep – Nov 2022": "2022年9月 – 11月",
   "Apr – Jul 2021": "2021年4月 – 7月",
+  "Apr 2019 – Nov 2022": "2019年4月 – 2022年11月",
   "ENTIIS Pte Ltd · Petaling, Selangor · Hybrid": "ENTIIS Pte Ltd · セランゴール州ペタリン · ハイブリッド勤務",
   "Service Owner": "サービスオーナー",
   "Ant International · Kuala Lumpur": "Ant International · クアラルンプール",
@@ -103,11 +104,11 @@ export default {
     "マレーシア最大の銀行でメインフレームからキャリアをスタート。ATMシステムでCOBOLとJCLを扱いました。",
   "BSc (Hons) Software Engineering": "ソフトウェア工学 学士（優等）",
   "Asia Pacific University (APU)": "アジア・パシフィック大学（APU）",
-  "Final year project: an Android emergency-button app that alerts help with a single press.":
-    "卒業制作：ワンタップで助けを呼べるAndroidの緊急ボタンアプリ。",
+  "Graduated with a CGPA of 3.41. Final year project: an Android emergency-button app that alerts help with a single press.":
+    "CGPA 3.41で卒業。卒業制作：ワンタップで助けを呼べるAndroidの緊急ボタンアプリ。",
   "View FYP": "卒業制作を見る",
   "Management Trainee (Intern)": "マネジメント・トレーニー（インターン）",
-  "Glocomp Systems · Selangor": "Glocomp Systems · セランゴール州",
+  "Glocomp Systems · Petaling Jaya": "Glocomp Systems · ペタリンジャヤ",
   "Built automation bots with Automation Anywhere to streamline workflows on live projects, after learning the platform through hands-on training.":
     "実践的なトレーニングでAutomation Anywhereを習得し、進行中のプロジェクトの業務を効率化する自動化ボットを構築。",
 
@@ -135,9 +136,17 @@ export default {
   "Built on my own time, because I wanted to.": "作りたくて、自分の時間で作ったもの。",
   "CLASSIFIED": "社外秘",
   "SINCE {year}": "{year}年〜",
-  "Company Projects": "社内プロジェクト",
-  "Production systems at Ant International, Boost (Axiata Digital) and Maybank, covering cross-border payments, chargebacks, e-wallet APIs and ATM systems. Most details stay internal, but I'm happy to talk about the problems I solved.":
-    "Ant International、Boost（Axiata Digital）、Maybankの本番システム。クロスボーダー決済、チャージバック、電子ウォレットAPI、ATMシステムなど。詳細の多くは社外秘ですが、解決した課題についてはお話しできます。",
+  "Auto-debit & Card Sharing APIs": "自動引き落とし・カード共有API",
+  "International E-Wallet Card": "国際電子ウォレットカード",
+  "Bank Partnership & Boost Bank": "銀行提携とBoost Bank",
+  "A chargeback feature that applies the transaction-date exchange rate in specific chargeback scenarios. I restructured the existing chargeback flows to fit it in without destabilising processing, and checked the business logic and edge cases with other teams before rollout.":
+    "特定のチャージバックで取引日の為替レートを適用する機能。処理を不安定にせず組み込めるよう既存のチャージバックフローを再構成し、リリース前に他チームと業務ロジックやエッジケースを確認しました。",
+  "APIs for unbinding auto-debit and for sharing cards across user roles, with requirements coordinated across several teams so every role behaves consistently.":
+    "自動引き落としの解除と、ユーザーの役割をまたいだカード共有のためのAPI。どの役割でも一貫して動作するよう、複数のチームと要件を調整しました。",
+  "Integrated a prepaid Mastercard, the Beyond Card, into the e-wallet so users can pay both in Malaysia and abroad. Around 20,000 users onboarded.":
+    "プリペイドMastercard「Beyond Card」を電子ウォレットに統合し、マレーシア国内でも海外でも支払えるようにしました。約2万人のユーザーが利用登録。",
+  "Worked with an international bank partner on funding and disbursing contracts: redesigned the onboarding flow, built a way for existing users to update their details, and designed the tables that log and send contract data such as charge-offs, recoveries, refunds and rebates. Also supported the Boost Bank team on features for its launch.":
+    "国際的な提携銀行と、契約の資金供給と支払いに取り組みました。オンボーディングの流れを再設計し、既存ユーザーが情報を更新できる仕組みを作り、貸倒償却・回収・返金・リベートなどの契約データを記録・送信するテーブルを設計。Boost Bankのローンチに向けた機能開発でもチームを支援しました。",
   "Manga + Video": "マンガ＋動画",
   "A React Native (Expo) app with built-in webviews that records every manga or video you open, with deduplicated entries, cover thumbnails and optional Google Drive backup.":
     "アプリ内のWebビューで開いたマンガや動画をすべて記録するReact Native（Expo）アプリ。重複のない記録、表紙のサムネイル、Googleドライブへのバックアップ（任意）に対応。",
@@ -162,10 +171,15 @@ export default {
 
   // ── Skills ──
   "The toolkit.": "道具箱。",
-  "Languages": "言語",
+  "Programming": "プログラミング",
   "Frameworks": "フレームワーク",
   "Data & Ops": "データと運用",
   "Tools & Practices": "ツールと手法",
+  "Spoken languages": "話せる言語",
+  "Mandarin (native)": "中国語（母語）",
+  "English (fluent)": "英語（流暢）",
+  "Malay (conversational)": "マレー語（日常会話）",
+  "Japanese (JLPT N4)": "日本語（JLPT N4）",
   "API specs": "API仕様書",
 
   // ── Contact ──

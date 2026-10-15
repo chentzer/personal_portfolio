@@ -62,6 +62,7 @@ export default {
   "Nov 2022 – Nov 2024": "2022年11月 – 2024年11月",
   "Sep – Nov 2022": "2022年9月 – 11月",
   "Apr – Jul 2021": "2021年4月 – 7月",
+  "Apr 2019 – Nov 2022": "2019年4月 – 2022年11月",
   "ENTIIS Pte Ltd · Petaling, Selangor · Hybrid": "ENTIIS Pte Ltd · 雪兰莪八打灵 · 混合办公",
   "Service Owner": "服务负责人",
   "Ant International · Kuala Lumpur": "Ant International · 吉隆坡",
@@ -103,11 +104,11 @@ export default {
     "在马来西亚最大的银行从主机开始我的职业生涯，使用 COBOL 和 JCL 开发 ATM 系统。",
   "BSc (Hons) Software Engineering": "软件工程荣誉学士",
   "Asia Pacific University (APU)": "亚太科技大学（APU）",
-  "Final year project: an Android emergency-button app that alerts help with a single press.":
-    "毕业设计：一键求助的 Android 紧急按钮应用。",
+  "Graduated with a CGPA of 3.41. Final year project: an Android emergency-button app that alerts help with a single press.":
+    "以 CGPA 3.41 毕业。毕业设计：一键求助的 Android 紧急按钮应用。",
   "View FYP": "查看毕业设计",
   "Management Trainee (Intern)": "管理培训生（实习）",
-  "Glocomp Systems · Selangor": "Glocomp Systems · 雪兰莪",
+  "Glocomp Systems · Petaling Jaya": "Glocomp Systems · 八打灵再也",
   "Built automation bots with Automation Anywhere to streamline workflows on live projects, after learning the platform through hands-on training.":
     "通过实践培训掌握 Automation Anywhere，并开发自动化机器人，优化进行中项目的工作流程。",
 
@@ -135,9 +136,17 @@ export default {
   "Built on my own time, because I wanted to.": "利用业余时间，出于热爱而做。",
   "CLASSIFIED": "机密",
   "SINCE {year}": "始于 {year}",
-  "Company Projects": "公司项目",
-  "Production systems at Ant International, Boost (Axiata Digital) and Maybank, covering cross-border payments, chargebacks, e-wallet APIs and ATM systems. Most details stay internal, but I'm happy to talk about the problems I solved.":
-    "Ant International、Boost（Axiata Digital）和 Maybank 的生产系统，涵盖跨境支付、拒付、电子钱包 API 和 ATM 系统。大部分细节属于内部信息，但我很乐意分享我解决过的问题。",
+  "Auto-debit & Card Sharing APIs": "自动扣款与卡片共享 API",
+  "International E-Wallet Card": "国际电子钱包卡",
+  "Bank Partnership & Boost Bank": "银行合作与 Boost Bank",
+  "A chargeback feature that applies the transaction-date exchange rate in specific chargeback scenarios. I restructured the existing chargeback flows to fit it in without destabilising processing, and checked the business logic and edge cases with other teams before rollout.":
+    "在特定拒付场景下采用交易日汇率的拒付功能。我重构了现有的拒付流程，在不影响处理稳定性的前提下接入该功能，并在上线前与其他团队核对业务逻辑和边界情况。",
+  "APIs for unbinding auto-debit and for sharing cards across user roles, with requirements coordinated across several teams so every role behaves consistently.":
+    "用于解除自动扣款以及在不同用户角色之间共享卡片的 API，并与多个团队协调需求，确保每个角色的行为一致。",
+  "Integrated a prepaid Mastercard, the Beyond Card, into the e-wallet so users can pay both in Malaysia and abroad. Around 20,000 users onboarded.":
+    "将预付 Mastercard「Beyond Card」整合进电子钱包，让用户在马来西亚和海外都能付款。约 2 万名用户已开通。",
+  "Worked with an international bank partner on funding and disbursing contracts: redesigned the onboarding flow, built a way for existing users to update their details, and designed the tables that log and send contract data such as charge-offs, recoveries, refunds and rebates. Also supported the Boost Bank team on features for its launch.":
+    "与一家国际合作银行合作处理合约的放款与拨付：重新设计开户流程，让现有用户可以更新资料，并设计用于记录和传送坏账核销、追回、退款和回扣等合约数据的数据表。也协助 Boost Bank 团队开发上线所需的功能。",
   "Manga + Video": "漫画 + 视频",
   "A React Native (Expo) app with built-in webviews that records every manga or video you open, with deduplicated entries, cover thumbnails and optional Google Drive backup.":
     "一款 React Native（Expo）应用，通过内置网页视图记录你打开的每一部漫画或视频，自动去重、显示封面缩略图，并可选择备份到 Google Drive。",
@@ -162,10 +171,15 @@ export default {
 
   // ── Skills ──
   "The toolkit.": "工具箱。",
-  "Languages": "语言",
+  "Programming": "编程",
   "Frameworks": "框架",
   "Data & Ops": "数据与运维",
   "Tools & Practices": "工具与实践",
+  "Spoken languages": "语言能力",
+  "Mandarin (native)": "华语（母语）",
+  "English (fluent)": "英语（流利）",
+  "Malay (conversational)": "马来语（日常会话）",
+  "Japanese (JLPT N4)": "日语（JLPT N4）",
   "API specs": "API 规范",
 
   // ── Contact ──

@@ -20,7 +20,7 @@ export const profile = {
   location: "Selangor, Malaysia",
   coords: "03°04′N 101°31′E",
   photo: null, // TODO: e.g. "assets/me.jpg" — until set, a holographic monogram is shown
-  resume: null, // TODO: e.g. "assets/Liew_Chen_Tzer_Resume.pdf" — the button activates once set
+  resume: "assets/Liew_Chen_Tzer_Resume.pdf", // March 2026 résumé; set to null to hide the button
   available: true, // shows the "open to conversations" indicator
 };
 
@@ -99,10 +99,10 @@ export const career = [
   },
   {
     kind: "education",
-    year: "2022",
+    year: "Apr 2019 – Nov 2022",
     title: "BSc (Hons) Software Engineering",
     place: "Asia Pacific University (APU)",
-    text: "Final year project: an Android emergency-button app that alerts help with a single press.",
+    text: "Graduated with a CGPA of 3.41. Final year project: an Android emergency-button app that alerts help with a single press.",
     tags: ["Java", "Android"],
     link: { label: "View FYP", href: "https://github.com/chentzer/Final_Year_Project" },
   },
@@ -110,7 +110,7 @@ export const career = [
     kind: "career",
     year: "Apr – Jul 2021",
     title: "Management Trainee (Intern)",
-    place: "Glocomp Systems · Selangor",
+    place: "Glocomp Systems · Petaling Jaya",
     text: "Built automation bots with Automation Anywhere to streamline workflows on live projects, after learning the platform through hands-on training.",
     tags: ["RPA", "Automation Anywhere"],
   },
@@ -149,13 +149,32 @@ export const achievements = [
 ];
 
 // Projects on the Career page, in two groups.
-// Work: real company projects. TODO: expand into one card per project from the résumé.
+// Work: company projects, taken from the résumé. Keep internal details and partner names out.
+// `subtitle` = the company. Newest first.
 export const workProjects = [
   {
-    title: "Company Projects",
-    classified: true,
-    text: "Production systems at Ant International, Boost (Axiata Digital) and Maybank, covering cross-border payments, chargebacks, e-wallet APIs and ATM systems. Most details stay internal, but I'm happy to talk about the problems I solved.",
-    tags: ["Java", "Spring Boot", "Play Framework", "COBOL"],
+    title: "Pre-quote Settlement",
+    subtitle: "Ant International",
+    text: "A chargeback feature that applies the transaction-date exchange rate in specific chargeback scenarios. I restructured the existing chargeback flows to fit it in without destabilising processing, and checked the business logic and edge cases with other teams before rollout.",
+    tags: ["Java", "SofaBoot", "Chargebacks"],
+  },
+  {
+    title: "Auto-debit & Card Sharing APIs",
+    subtitle: "Ant International",
+    text: "APIs for unbinding auto-debit and for sharing cards across user roles, with requirements coordinated across several teams so every role behaves consistently.",
+    tags: ["Java", "REST APIs", "Microservices"],
+  },
+  {
+    title: "International E-Wallet Card",
+    subtitle: "Boost (Axiata Digital)",
+    text: "Integrated a prepaid Mastercard, the Beyond Card, into the e-wallet so users can pay both in Malaysia and abroad. Around 20,000 users onboarded.",
+    tags: ["Java", "Play Framework", "Kafka"],
+  },
+  {
+    title: "Bank Partnership & Boost Bank",
+    subtitle: "Boost (Axiata Digital)",
+    text: "Worked with an international bank partner on funding and disbursing contracts: redesigned the onboarding flow, built a way for existing users to update their details, and designed the tables that log and send contract data such as charge-offs, recoveries, refunds and rebates. Also supported the Boost Bank team on features for its launch.",
+    tags: ["Java", "MySQL", "Banking"],
   },
 ];
 
@@ -188,10 +207,11 @@ export const passionProjects = [
 ];
 
 export const skills = [
-  { group: "Languages", items: ["Java", "COBOL", "JCL", "Go", "JavaScript", "SQL"] },
+  { group: "Programming", items: ["Java", "COBOL", "JCL", "Go", "JavaScript", "SQL"] },
   { group: "Frameworks", items: ["Spring Boot", "Spring", "Play Framework", "React", "React Native"] },
   { group: "Data & Ops", items: ["MySQL", "Elasticsearch", "Jenkins", "Maven"] },
   { group: "Tools & Practices", items: ["Git", "Postman", "IntelliJ", "Automation Anywhere", "Scrum", "API specs"] },
+  { group: "Spoken languages", items: ["Mandarin (native)", "English (fluent)", "Malay (conversational)", "Japanese (JLPT N4)"] },
 ];
 
 // Live GitHub contribution graph (Career page). Set show: false to hide the section.

@@ -62,6 +62,7 @@ export default {
   "Nov 2022 – Nov 2024": "Nov 2022 – Nov 2024",
   "Sep – Nov 2022": "Sep – Nov 2022",
   "Apr – Jul 2021": "Apr – Jul 2021",
+  "Apr 2019 – Nov 2022": "Apr 2019 – Nov 2022",
   "ENTIIS Pte Ltd · Petaling, Selangor · Hybrid": "ENTIIS Pte Ltd · Petaling, Selangor · Hibrid",
   "Service Owner": "Pemilik Perkhidmatan",
   "Ant International · Kuala Lumpur": "Ant International · Kuala Lumpur",
@@ -103,11 +104,11 @@ export default {
     "Memulakan kerjaya pada kerangka utama di bank terbesar Malaysia, menggunakan COBOL dan JCL untuk sistem ATM.",
   "BSc (Hons) Software Engineering": "Ijazah Sarjana Muda Kejuruteraan Perisian (Kepujian)",
   "Asia Pacific University (APU)": "Asia Pacific University (APU)",
-  "Final year project: an Android emergency-button app that alerts help with a single press.":
-    "Projek tahun akhir: aplikasi butang kecemasan Android yang meminta bantuan dengan satu tekan.",
+  "Graduated with a CGPA of 3.41. Final year project: an Android emergency-button app that alerts help with a single press.":
+    "Lulus dengan CGPA 3.41. Projek tahun akhir: aplikasi butang kecemasan Android yang meminta bantuan dengan satu tekan.",
   "View FYP": "Lihat projek tahun akhir",
   "Management Trainee (Intern)": "Pelatih Pengurusan (Pelatih Industri)",
-  "Glocomp Systems · Selangor": "Glocomp Systems · Selangor",
+  "Glocomp Systems · Petaling Jaya": "Glocomp Systems · Petaling Jaya",
   "Built automation bots with Automation Anywhere to streamline workflows on live projects, after learning the platform through hands-on training.":
     "Membina bot automasi dengan Automation Anywhere untuk melancarkan aliran kerja projek sebenar, selepas mempelajari platform itu melalui latihan praktikal.",
 
@@ -135,9 +136,17 @@ export default {
   "Built on my own time, because I wanted to.": "Dibina pada masa lapang, kerana saya mahu.",
   "CLASSIFIED": "SULIT",
   "SINCE {year}": "SEJAK {year}",
-  "Company Projects": "Projek Syarikat",
-  "Production systems at Ant International, Boost (Axiata Digital) and Maybank, covering cross-border payments, chargebacks, e-wallet APIs and ATM systems. Most details stay internal, but I'm happy to talk about the problems I solved.":
-    "Sistem pengeluaran di Ant International, Boost (Axiata Digital) dan Maybank, merangkumi pembayaran rentas sempadan, caj balik, API e-dompet dan sistem ATM. Kebanyakan butiran adalah dalaman, tetapi saya gembira berkongsi masalah yang telah saya selesaikan.",
+  "Auto-debit & Card Sharing APIs": "API Debit Automatik & Perkongsian Kad",
+  "International E-Wallet Card": "Kad E-Dompet Antarabangsa",
+  "Bank Partnership & Boost Bank": "Kerjasama Bank & Boost Bank",
+  "A chargeback feature that applies the transaction-date exchange rate in specific chargeback scenarios. I restructured the existing chargeback flows to fit it in without destabilising processing, and checked the business logic and edge cases with other teams before rollout.":
+    "Ciri caj balik yang menggunakan kadar pertukaran pada tarikh transaksi untuk senario caj balik tertentu. Saya menyusun semula aliran caj balik sedia ada supaya ciri ini dapat dimasukkan tanpa menjejaskan kestabilan pemprosesan, dan menyemak logik perniagaan serta kes tepi bersama pasukan lain sebelum dilancarkan.",
+  "APIs for unbinding auto-debit and for sharing cards across user roles, with requirements coordinated across several teams so every role behaves consistently.":
+    "API untuk membatalkan debit automatik dan berkongsi kad antara peranan pengguna, dengan keperluan diselaraskan merentas beberapa pasukan supaya setiap peranan berfungsi secara konsisten.",
+  "Integrated a prepaid Mastercard, the Beyond Card, into the e-wallet so users can pay both in Malaysia and abroad. Around 20,000 users onboarded.":
+    "Mengintegrasikan Mastercard prabayar, Beyond Card, ke dalam e-dompet supaya pengguna boleh membayar di Malaysia dan di luar negara. Sekitar 20,000 pengguna telah mendaftar.",
+  "Worked with an international bank partner on funding and disbursing contracts: redesigned the onboarding flow, built a way for existing users to update their details, and designed the tables that log and send contract data such as charge-offs, recoveries, refunds and rebates. Also supported the Boost Bank team on features for its launch.":
+    "Bekerjasama dengan rakan bank antarabangsa untuk pembiayaan dan pengeluaran kontrak: mereka bentuk semula aliran pendaftaran, membina cara untuk pengguna sedia ada mengemas kini butiran mereka, dan mereka bentuk jadual yang merekod serta menghantar data kontrak seperti hapus kira, pemulihan, bayaran balik dan rebat. Turut membantu pasukan Boost Bank membangunkan ciri untuk pelancarannya.",
   "Manga + Video": "Manga + Video",
   "A React Native (Expo) app with built-in webviews that records every manga or video you open, with deduplicated entries, cover thumbnails and optional Google Drive backup.":
     "Aplikasi React Native (Expo) dengan paparan web terbina dalam yang merekod setiap manga atau video yang anda buka, tanpa entri berganda, dengan lakaran kecil kulit dan sandaran Google Drive pilihan.",
@@ -162,10 +171,15 @@ export default {
 
   // ── Skills ──
   "The toolkit.": "Peti alatan.",
-  "Languages": "Bahasa",
+  "Programming": "Pengaturcaraan",
   "Frameworks": "Rangka Kerja",
   "Data & Ops": "Data & Operasi",
   "Tools & Practices": "Alatan & Amalan",
+  "Spoken languages": "Bahasa pertuturan",
+  "Mandarin (native)": "Mandarin (bahasa ibunda)",
+  "English (fluent)": "Bahasa Inggeris (fasih)",
+  "Malay (conversational)": "Bahasa Melayu (perbualan)",
+  "Japanese (JLPT N4)": "Bahasa Jepun (JLPT N4)",
   "API specs": "Spesifikasi API",
 
   // ── Contact ──
