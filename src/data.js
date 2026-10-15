@@ -261,6 +261,13 @@ export const story = [
   {
     kind: "life",
     year: "2017",
+    title: "My first job",
+    place: "Waiter · Madam Kwan's",
+    text: "I only lasted a month, but it was the first time I felt the real pain of being a working adult.",
+  },
+  {
+    kind: "life",
+    year: "2017",
     title: "King Scout",
     place: "High school",
     text: "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.",

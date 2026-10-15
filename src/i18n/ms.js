@@ -206,6 +206,10 @@ export default {
   "During the hardest stretch of university, their songs and what they meant helped me keep pushing through.":
     "Semasa tempoh paling sukar di universiti, lagu-lagu mereka dan maknanya membantu saya terus bertahan.",
   "Resilience": "Ketabahan",
+  "My first job": "Kerja pertama saya",
+  "Waiter · Madam Kwan's": "Pelayan · Madam Kwan's",
+  "I only lasted a month, but it was the first time I felt the real pain of being a working adult.":
+    "Saya cuma bertahan sebulan, tetapi itulah kali pertama saya merasai peritnya hidup sebagai orang dewasa yang bekerja.",
   "King Scout": "Pengakap Raja",
   "High school": "Sekolah menengah",
   "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.":

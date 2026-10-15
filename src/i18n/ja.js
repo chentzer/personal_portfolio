@@ -206,6 +206,10 @@ export default {
   "During the hardest stretch of university, their songs and what they meant helped me keep pushing through.":
     "大学で一番つらい時期、彼らの曲とその意味が、前に進み続ける力になりました。",
   "Resilience": "粘り強さ",
+  "My first job": "はじめての仕事",
+  "Waiter · Madam Kwan's": "ウェイター · Madam Kwan's",
+  "I only lasted a month, but it was the first time I felt the real pain of being a working adult.":
+    "たった1か月で辞めてしまいましたが、社会人として働く本当の大変さを初めて味わいました。",
   "King Scout": "キングスカウト",
   "High school": "高校",
   "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.":

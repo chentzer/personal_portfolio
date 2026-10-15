@@ -206,6 +206,10 @@ export default {
   "During the hardest stretch of university, their songs and what they meant helped me keep pushing through.":
     "在大学最艰难的日子里，他们的歌和歌里的意义支撑我继续前进。",
   "Resilience": "坚韧",
+  "My first job": "我的第一份工作",
+  "Waiter · Madam Kwan's": "服务员 · Madam Kwan's",
+  "I only lasted a month, but it was the first time I felt the real pain of being a working adult.":
+    "我只坚持了一个月，但那是我第一次真正体会到成年人工作的辛苦。",
   "King Scout": "皇家童军",
   "High school": "中学",
   "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.":
