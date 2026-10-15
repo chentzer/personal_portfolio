@@ -349,7 +349,7 @@ export const elsewhere = [
   { key: "spotify", label: "Spotify", href: "https://open.spotify.com/user/fanxu", text: "What's on repeat right now." },
   { key: "steam", label: "Steam", href: "https://steamcommunity.com/id/killerx3000/", text: "9,800+ achievements, 110 perfect games." },
   // On hold for now; to show it, set the href:
-  { key: "anilist", label: "MyAnimeList", href: null /* "https://myanimelist.net/profile/ChenTzer" */, text: "Everything I've watched and read." },
+  { key: "anilist", label: "MyAnimeList", href: "https://myanimelist.net/profile/ChenTzer", text: "Everything I've watched and read." },
 ];
 
 // Guestbook (Life page), powered by giscus + GitHub Discussions.

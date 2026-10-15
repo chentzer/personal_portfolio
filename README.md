@@ -59,7 +59,7 @@ To redraw it after changing your name, title or tagline: start `py tools/serve.p
 
 ## Pre-launch checklist
 
-- [ ] MyAnimeList: link on hold for now; when ready, set its `href` in `elsewhere` in `src/data.js`
+- [x] MyAnimeList: lists tidied up; link enabled
 - [x] Steam: profile tidied up; link enabled
 - [ ] Instagram: review what's public
 - [x] Fix current job title (Software Engineer @ ENTIIS)
