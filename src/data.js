@@ -1,6 +1,7 @@
 // ─────────────────────────────────────────────────────────────
 //  ALL SITE CONTENT LIVES HERE.
-//  Edit this file to update the website — no other file needed.
+//  Edit this file to update the website. Travels, Top 3, Story, Career and the Life stats
+//  can also come from a Google Sheet (see `sheet` near the end and the README).
 //  Search for "TODO" to find details that still need filling in.
 //
 //  The site has two pages:
@@ -238,9 +239,11 @@ export const lifeIntro = {
     "One band in particular changed things for me. The story is below.",
   ],
   stats: [
-    { value: "110", label: "Perfect games on Steam" },
-    { value: "2,284", label: "Anime episodes watched" },
-    { value: "4,700+", label: "Manga chapters read" },
+    // `key` links a stat to the Google Sheet's Stats tab. `mal` = filled in live from MyAnimeList
+    // (via the Jikan API) when that answers; otherwise these values (or the sheet's) show.
+    { key: "steam", value: "110", label: "Perfect games on Steam" },
+    { key: "anime", value: "2,284", label: "Anime episodes watched", mal: "anime" },
+    { key: "manga", value: "4,700+", label: "Manga chapters read", mal: "manga" },
     // Counts the countries in `travels` below, so it updates when you add places.
     { label: "Countries visited", get value() { return String(new Set(travels.map((t) => t.country)).size); } },
     // Live count of unique visitors to the whole site, from GoatCounter (`analytics` below).
@@ -296,6 +299,7 @@ export const story = [
     text: "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.",
   },
   {
+    id: "hello-world", // the Google Sheet row with this id keeps the code block below
     kind: "life",
     year: "2000",
     title: "Hello, world",
@@ -387,6 +391,18 @@ export const guestbook = {
 // e.g. "chentzer" for https://chentzer.goatcounter.com. Visits from localhost aren't counted.
 export const analytics = {
   goatcounter: "chentzer", // dashboard: https://chentzer.goatcounter.com
+};
+
+// MyAnimeList username for the live anime/manga stats on the Life page.
+export const myAnimeList = "ChenTzer";
+
+// Google Sheet with Travels, Top 3, Story, Career and Stats (see the README).
+// While `id` is null the site uses the copies in this file. The sheet, once set up, wins.
+//   id:   from File → Share → Publish to web; the "2PACX-…" part of the link
+//   tabs: each tab's gid (the number after "gid=" in the address bar when that tab is open)
+export const sheet = {
+  id: "2PACX-1vQMa5_kYQmMmo0BkYRY0m_n6HjzTgtv9O-TYzAMUMxcz01GGR4RXedanIZylhosCA",
+  tabs: { travels: 2112620528, topThree: 524641373, story: 568824744, career: 1999413922, stats: 1807651964 },
 };
 
 // Link-preview image (the card shown when the site is shared on LinkedIn, WhatsApp, etc.).

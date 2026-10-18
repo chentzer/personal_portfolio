@@ -7,6 +7,7 @@ import { Terminal } from "./terminal.js";
 import { profile, scenes, analytics } from "./data.js";
 import { t, getLang } from "./i18n.js";
 import { unlock, AchievementToasts, AchievementsPanel } from "./achievements.js";
+import { loadLiveContent } from "./live.js";
 
 // Visitor stats (GoatCounter): only loads once a code is set in data.js, and never on localhost.
 if (analytics.goatcounter && !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) {
@@ -167,4 +168,6 @@ function App() {
 function sessionStorageGet(k) { try { return sessionStorage.getItem(k); } catch { return null; } }
 function sessionStorageSet(k, v) { try { sessionStorage.setItem(k, v); } catch {} }
 
+// Pull in the Google Sheet (if set up) before the first render; capped at a couple of seconds.
+await loadLiveContent();
 createRoot(document.getElementById("root")).render(html`<${App} />`);

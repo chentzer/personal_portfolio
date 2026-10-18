@@ -4,7 +4,7 @@ A futuristic personal portfolio built with **React 18 + Three.js**. It needs no 
 
 ## Edit content
 
-All text lives in **`src/data.js`**: profile, timeline, achievements, projects, skills, hobbies and contact links.
+**Travels, Top 3, Story, Career and the Life stats** can be edited in a Google Sheet (see below). Everything else lives in **`src/data.js`**: profile, about, achievements, projects, skills, hobbies and contact links. `data.js` also keeps a copy of the sheet's content, which the site falls back to if the sheet can't be reached.
 Search for `TODO` to find what still needs filling in. Values starting with `TODO` are hidden on the site until replaced.
 
 - **Photo:** put an image in `assets/` and set `profile.photo = "assets/me.jpg"`.
@@ -21,11 +21,28 @@ py tools/serve.py 5173 .
 
 Then open http://127.0.0.1:5173. This small server turns off caching, so edits always show up. (On macOS/Linux use `python3` instead of `py`; any static server also works.)
 
+## Edit content in Google Sheets
+
+The site reads five tabs of a Google Sheet every time someone visits: **Travels**, **Top 3**, **Story**, **Career** and **Stats**. Edits show up within about 5 minutes, with no commit or deploy. The sheet's **Read me** tab explains every column.
+
+How it works: each tab is published to the web as CSV. `src/live.js` fetches them before the page first renders (waiting at most 2.5 seconds), turns the rows into the same shapes `data.js` uses, and swaps them in. If the sheet isn't set up, is slow or fails, the site uses the copies in `data.js`.
+
+- **Travels:** `lat`/`lon` are optional. If they're blank, the place is looked up by name on Open-Meteo's free geocoder.
+- **Translations:** columns ending in `_ja`, `_zh` and `_ms`. Blank means that language shows the English.
+- **Stats:** `steam` is the perfect-games count. The anime and manga counts are read live from MyAnimeList through the free [Jikan](https://jikan.moe) API (MyAnimeList's own API can't be called from a browser without a key). The sheet's values show when Jikan is down.
+- **Story's "Hello, world"** keeps its code block from `data.js` through its `id` (`hello-world`).
+
+**One-time setup**
+1. Upload `Portfolio content.xlsx` (pre-filled with the current content) to Google Drive, open it with **Google Sheets**, and save it as a Google Sheet (**File → Save as Google Sheets**).
+2. **File → Share → Publish to web** → *Entire document*, *Comma-separated values (.csv)* → **Publish**.
+3. Put the `2PACX-…` part of the published link in `sheet.id` in `src/data.js`. For each tab, open it and copy the number after `gid=` in the address bar into `sheet.tabs`.
+
+Anything in the sheet is public, the same as the website.
+
 ## Every December: update your Top 3
 
 1. Open **Spotify Wrapped** and **Steam Replay** for the year.
-2. In `src/data.js`, copy the latest entry in `topThree` and paste it at the top with the new year.
-3. Fill in `music` (song, artist, Spotify share link) and `games` (title, Steam app number from the store URL, a short note).
+2. In the sheet's **Top 3** tab, add rows for the new year: three with `type` = `song` (title, artist, Spotify song link) and three with `type` = `game` (title, Steam store link, a short note).
 
 Cover art and game images load automatically, and a year switcher appears once there's more than one year.
 

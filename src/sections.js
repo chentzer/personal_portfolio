@@ -8,7 +8,7 @@ import { t, LANGS, getLang, setLang } from "./i18n.js";
 import { useAchievementCount, useUnlockOnView } from "./achievements.js";
 import {
   profile, about, career, achievements, workProjects, passionProjects, skills, contact, github,
-  lifeIntro, story, scenes, hobbies, elsewhere, guestbook, analytics,
+  lifeIntro, story, scenes, hobbies, elsewhere, guestbook, analytics, myAnimeList,
 } from "./data.js";
 
 // The two pages. Each has its own file so tabs are real, shareable URLs.
@@ -178,9 +178,34 @@ function useVisitorCount(on) {
   return count;
 }
 
+// Episodes watched / chapters read from MyAnimeList, via the free Jikan API (MAL's own API
+// can't be called from a browser without a key). Null until it answers; on failure the stat
+// keeps its value from data.js or the Google Sheet.
+let malRequest = null;
+function useMalStats(on) {
+  const [stats, setStats] = useState(null);
+  useEffect(() => {
+    if (!on || !myAnimeList) return;
+    let alive = true;
+    malRequest ||= fetch(`https://api.jikan.moe/v4/users/${encodeURIComponent(myAnimeList)}/statistics`, { signal: AbortSignal.timeout(8000) })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => d?.data && { anime: d.data.anime?.episodes_watched, manga: d.data.manga?.chapters_read })
+      .catch(() => null);
+    malRequest.then((s) => { if (alive && s) setStats(s); });
+    return () => { alive = false; };
+  }, [on]);
+  return stats;
+}
+
 export function About({ id = "about", index = "01", label = "About", data = about, cta }) {
   useReveal(); // the visitor stat arrives after first render and needs revealing too
   const visitors = useVisitorCount(data.stats.some((s) => s.visitors));
+  const mal = useMalStats(data.stats.some((s) => s.mal));
+  const value = (s) => {
+    if (s.visitors) return visitors;
+    const live = s.mal && mal?.[s.mal];
+    return typeof live === "number" && live > 0 ? live.toLocaleString("en-US") : s.value;
+  };
   const stats = data.stats.filter((s) => (s.visitors ? visitors : true));
   return html`<section id=${id} className="section">
     <${SectionHead} index=${index} label=${t(label)} title=${t(data.heading)} />
@@ -198,7 +223,7 @@ export function About({ id = "about", index = "01", label = "About", data = abou
         ${data.paragraphs.map((p, i) => html`<p key=${i} data-reveal style=${{ "--d": i * 90 + "ms" }}>${t(p)}</p>`)}
         <div className="stats">
           ${stats.map((s, i) => html`<div key=${i} className="stat glass" data-reveal style=${{ "--d": i * 70 + "ms" }}>
-            <div className="stat-v">${s.visitors ? visitors : s.value}</div><div className="stat-l">${t(s.label)}</div>
+            <div className="stat-v">${value(s)}</div><div className="stat-l">${t(s.label)}</div>
           </div>`)}
         </div>
         ${cta && html`<a className="link cross-link" href=${withLang(cta.href)} data-reveal>${t(cta.label)} <${Icon} name="arrow" size=${14} /></a>`}

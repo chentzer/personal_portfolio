@@ -39,6 +39,11 @@ export function setLang(code) {
   window.dispatchEvent(new CustomEvent("langchange", { detail: code }));
 }
 
+// Extra translations supplied at runtime (from the Google Sheet's _ja/_zh/_ms columns).
+export function addTranslations(code, map) {
+  if (DICTS[code]) Object.assign(DICTS[code], map);
+}
+
 // Translate a string. Falls back to the English original.
 export function t(str) {
   if (str == null || lang === "en") return str;
