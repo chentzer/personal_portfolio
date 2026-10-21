@@ -197,6 +197,17 @@ export default {
   "Read the story": "阅读故事",
   "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game or a manga, travelling, or playing J-pop and C-pop on repeat.":
     "我在马来西亚雪兰莪长大。工作之外，我会去健身房、沉浸在游戏或漫画里、去旅行，或者单曲循环 J-pop 和 C-pop。",
+  "Gamer, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.":
+    "玩家、旅人，也是夜游（YOASOBI）的粉丝。简历上写不下的那一面。",
+  "Manga reader, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.":
+    "漫画迷、旅人，也是夜游（YOASOBI）的粉丝。简历上写不下的那一面。",
+  "Traveller and YOASOBI fan. The parts of me that don't fit on a résumé.": "旅人，也是夜游（YOASOBI）的粉丝。简历上写不下的那一面。",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game, travelling, or playing J-pop and C-pop on repeat.":
+    "我在马来西亚雪兰莪长大。工作之外，我会去健身房、沉浸在游戏里、去旅行，或者单曲循环 J-pop 和 C-pop。",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a manga, travelling, or playing J-pop and C-pop on repeat.":
+    "我在马来西亚雪兰莪长大。工作之外，我会去健身房、沉浸在漫画里、去旅行，或者单曲循环 J-pop 和 C-pop。",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, travelling, or playing J-pop and C-pop on repeat.":
+    "我在马来西亚雪兰莪长大。工作之外，我会去健身房、去旅行，或者单曲循环 J-pop 和 C-pop。",
   "One band in particular changed things for me. The story is below.": "有一个音乐组合特别改变了我。故事就在下面。",
   "Perfect games on Steam": "Steam 全成就游戏",
   "Anime episodes watched": "看过的动画集数",
@@ -238,6 +249,17 @@ export default {
   "My year in songs and games.": "我的年度歌曲与游戏。",
   "On repeat": "单曲循环",
   "Most played": "玩得最多",
+  "Games": "游戏",
+  "What I play.": "我玩的游戏。",
+  "Genres I like": "喜欢的类型",
+  "Puzzle": "解谜",
+  "Roguelike": "Roguelike",
+  "Soulslike": "类魂",
+  "MOBA": "MOBA",
+  "Strategy / city-builder": "策略 / 城市建造",
+  "Story-driven": "剧情向",
+  "Finished Yakuza 0 and Kiwami so far": "目前已通关《0》和《极》",
+  "Top 3 · {year}": "{year} 年度前三",
   "39% of my play time · 100% achievements": "占游戏时间 39% · 100% 成就",
   "373 sessions": "373 次游玩",
   "Picked it back up in June · 100% achievements": "六月重新拾起 · 100% 成就",

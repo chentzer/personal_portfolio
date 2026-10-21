@@ -197,6 +197,18 @@ export default {
   "Read the story": "Baca kisahnya",
   "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game or a manga, travelling, or playing J-pop and C-pop on repeat.":
     "Saya membesar di Selangor, Malaysia. Di luar waktu kerja, saya ke gim, tenggelam dalam game atau manga, melancong, atau memainkan J-pop dan C-pop berulang kali.",
+  "Gamer, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.":
+    "Pemain game, pengembara dan peminat YOASOBI. Sisi diri saya yang tidak muat dalam resume.",
+  "Manga reader, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.":
+    "Pembaca manga, pengembara dan peminat YOASOBI. Sisi diri saya yang tidak muat dalam resume.",
+  "Traveller and YOASOBI fan. The parts of me that don't fit on a résumé.":
+    "Pengembara dan peminat YOASOBI. Sisi diri saya yang tidak muat dalam resume.",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game, travelling, or playing J-pop and C-pop on repeat.":
+    "Saya membesar di Selangor, Malaysia. Di luar waktu kerja, saya ke gim, tenggelam dalam game, melancong, atau memainkan J-pop dan C-pop berulang kali.",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a manga, travelling, or playing J-pop and C-pop on repeat.":
+    "Saya membesar di Selangor, Malaysia. Di luar waktu kerja, saya ke gim, tenggelam dalam manga, melancong, atau memainkan J-pop dan C-pop berulang kali.",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, travelling, or playing J-pop and C-pop on repeat.":
+    "Saya membesar di Selangor, Malaysia. Di luar waktu kerja, saya ke gim, melancong, atau memainkan J-pop dan C-pop berulang kali.",
   "One band in particular changed things for me. The story is below.": "Satu kumpulan muzik benar-benar mengubah hidup saya. Kisahnya di bawah.",
   "Perfect games on Steam": "Game sempurna di Steam",
   "Anime episodes watched": "Episod anime ditonton",
@@ -236,6 +248,17 @@ export default {
   "My year in songs and games.": "Lagu dan game saya tahun ini.",
   "On repeat": "Diulang-ulang",
   "Most played": "Paling banyak dimainkan",
+  "Games": "Permainan",
+  "What I play.": "Permainan saya.",
+  "Genres I like": "Genre kegemaran",
+  "Puzzle": "Teka-teki",
+  "Roguelike": "Roguelike",
+  "Soulslike": "Soulslike",
+  "MOBA": "MOBA",
+  "Strategy / city-builder": "Strategi / pembinaan bandar",
+  "Story-driven": "Berasaskan cerita",
+  "Finished Yakuza 0 and Kiwami so far": "Setakat ini tamat Yakuza 0 dan Kiwami",
+  "Top 3 · {year}": "Top 3 · {year}",
   "39% of my play time · 100% achievements": "39% masa bermain · 100% pencapaian",
   "373 sessions": "373 sesi",
   "Picked it back up in June · 100% achievements": "Dimainkan semula pada bulan Jun · 100% pencapaian",

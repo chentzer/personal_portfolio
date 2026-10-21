@@ -197,6 +197,18 @@ export default {
   "Read the story": "ストーリーを読む",
   "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game or a manga, travelling, or playing J-pop and C-pop on repeat.":
     "マレーシアのセランゴール州で育ちました。仕事以外では、ジムに行ったり、ゲームやマンガに没頭したり、旅をしたり、J-POPやC-POPをリピートで聴いたりしています。",
+  "Gamer, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.":
+    "ゲーマー、旅好き、そしてYOASOBIファン。履歴書には書ききれない私の一面。",
+  "Manga reader, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.":
+    "マンガ好き、旅好き、そしてYOASOBIファン。履歴書には書ききれない私の一面。",
+  "Traveller and YOASOBI fan. The parts of me that don't fit on a résumé.":
+    "旅好きで、YOASOBIファン。履歴書には書ききれない私の一面。",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game, travelling, or playing J-pop and C-pop on repeat.":
+    "マレーシアのセランゴール州で育ちました。仕事以外では、ジムに行ったり、ゲームに没頭したり、旅をしたり、J-POPやC-POPをリピートで聴いたりしています。",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a manga, travelling, or playing J-pop and C-pop on repeat.":
+    "マレーシアのセランゴール州で育ちました。仕事以外では、ジムに行ったり、マンガに没頭したり、旅をしたり、J-POPやC-POPをリピートで聴いたりしています。",
+  "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, travelling, or playing J-pop and C-pop on repeat.":
+    "マレーシアのセランゴール州で育ちました。仕事以外では、ジムに行ったり、旅をしたり、J-POPやC-POPをリピートで聴いたりしています。",
   "One band in particular changed things for me. The story is below.": "あるアーティストとの出会いが、私を変えました。その話は下にあります。",
   "Perfect games on Steam": "Steamで実績100%のゲーム",
   "Anime episodes watched": "視聴したアニメの話数",
@@ -236,6 +248,17 @@ export default {
   "My year in songs and games.": "この一年の曲とゲーム。",
   "On repeat": "リピート中",
   "Most played": "最もプレイしたゲーム",
+  "Games": "ゲーム",
+  "What I play.": "好きなゲーム。",
+  "Genres I like": "好きなジャンル",
+  "Puzzle": "パズル",
+  "Roguelike": "ローグライク",
+  "Soulslike": "ソウルライク",
+  "MOBA": "MOBA",
+  "Strategy / city-builder": "ストラテジー / 街づくり",
+  "Story-driven": "ストーリー重視",
+  "Finished Yakuza 0 and Kiwami so far": "これまでに『0』と『極』をクリア",
+  "Top 3 · {year}": "{year}年のトップ3",
   "39% of my play time · 100% achievements": "プレイ時間の39% · 実績100%",
   "373 sessions": "373セッション",
   "Picked it back up in June · 100% achievements": "6月に再開 · 実績100%",

@@ -234,16 +234,28 @@ export const contact = {
 
 export const lifeIntro = {
   heading: "Beyond the code.",
+  // Text that mentions hidden hobbies has a version for each unlock state (see `hiddenContent`).
+  tagline: {
+    both: "Gamer, manga reader, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.",
+    games: "Gamer, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.",
+    anime: "Manga reader, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.",
+    none: "Traveller and YOASOBI fan. The parts of me that don't fit on a résumé.",
+  },
   paragraphs: [
-    "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game or a manga, travelling, or playing J-pop and C-pop on repeat.",
+    {
+      both: "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game or a manga, travelling, or playing J-pop and C-pop on repeat.",
+      games: "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a game, travelling, or playing J-pop and C-pop on repeat.",
+      anime: "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, deep in a manga, travelling, or playing J-pop and C-pop on repeat.",
+      none: "I grew up in Selangor, Malaysia. Outside work you'll find me at the gym, travelling, or playing J-pop and C-pop on repeat.",
+    },
     "One band in particular changed things for me. The story is below.",
   ],
   stats: [
     // `key` links a stat to the Google Sheet's Stats tab. `mal` = filled in live from MyAnimeList
     // (via the Jikan API) when that answers; otherwise these values (or the sheet's) show.
-    { key: "steam", value: "110", label: "Perfect games on Steam" },
-    { key: "anime", value: "2,284", label: "Anime episodes watched", mal: "anime" },
-    { key: "manga", value: "4,700+", label: "Manga chapters read", mal: "manga" },
+    { key: "steam", value: "110", label: "Perfect games on Steam", hidden: "games" },
+    { key: "anime", value: "2,284", label: "Anime episodes watched", mal: "anime", hidden: "anime" },
+    { key: "manga", value: "4,700+", label: "Manga chapters read", mal: "manga", hidden: "anime" },
     // Counts the countries in `travels` below, so it updates when you add places.
     { label: "Countries visited", get value() { return String(new Set(travels.map((t) => t.country)).size); } },
     // Live count of unique visitors to the whole site, from GoatCounter (`analytics` below).
@@ -331,6 +343,38 @@ export const scenes = {
   },
 };
 
+// Game genres I like (Life page, Games section): one card per genre. The yearly Top 3 opens
+// from a button below them. Each game appears once. steam = the number in the game's store URL
+// (its banner image loads automatically); for a series, use the game whose picture should show.
+export const gameGenres = [
+  { name: "Puzzle", games: [
+    { title: "Danganronpa 1 & 2", steam: 413410 },
+    { title: "Gods Will Be Watching", steam: 274290 },
+    { title: "Phasmophobia", steam: 739630 },
+  ] },
+  { name: "Roguelike", games: [
+    { title: "Hades", steam: 1145360 },
+    { title: "Slay the Spire", steam: 646570 },
+  ] },
+  { name: "Soulslike", games: [
+    { title: "Dark Souls I–III", steam: 374320 },
+    { title: "Stellar Blade", steam: 3489700 },
+  ] },
+  { name: "MOBA", games: [
+    { title: "Dota 2", steam: 570 },
+  ] },
+  { name: "Strategy / city-builder", games: [
+    { title: "Frostpunk", steam: 323190 },
+    { title: "Valkyria Chronicles", steam: 294860 },
+  ] },
+  { name: "Story-driven", games: [
+    { title: "NieR: Automata", steam: 524220 },
+    { title: "Yakuza series", steam: 638970, note: "Finished Yakuza 0 and Kiwami so far" },
+    { title: "The Walking Dead", steam: 207610 },
+    { title: "The Elder Scrolls V: Skyrim", steam: 489830 },
+  ] },
+];
+
 // Yearly Top 3 (Life page). Each December, add a new year at the top:
 //   music: top songs from Spotify Wrapped. spotify = the song's share link (cover art loads automatically).
 //   games: top games from Steam Replay. steam = the number in the game's store URL (header image loads automatically).
@@ -351,8 +395,8 @@ export const topThree = [
 ];
 
 export const hobbies = [
-  { icon: "game", title: "Gaming", text: "From Dota 2 and Frostpunk to Celeste. 9,800+ achievements and 110 perfect games." },
-  { icon: "book", title: "Manga & Anime", text: "150+ manga and nearly 200 anime logged. Manga is the main habit, enough that I built an app to track it." },
+  { icon: "game", title: "Gaming", text: "From Dota 2 and Frostpunk to Celeste. 9,800+ achievements and 110 perfect games.", hidden: "games" },
+  { icon: "book", title: "Manga & Anime", text: "150+ manga and nearly 200 anime logged. Manga is the main habit, enough that I built an app to track it.", hidden: "anime" },
   { icon: "gym", title: "Gym", text: "Consistency over intensity. Progress comes from showing up." },
   { icon: "music", title: "Music", text: "J-pop, C-pop and Pop on heavy rotation: YOASOBI, Da-iCE, AiNA THE END, Gareth.T." },
   { icon: "plane", title: "Travel", text: "Exploring new cities, new food and new perspectives." }, // TODO: places you've been
@@ -371,9 +415,8 @@ export const travels = [
 export const elsewhere = [
   { key: "instagram", label: "Instagram", href: "https://www.instagram.com/chentzer/", text: "Travel and everyday life." },
   { key: "spotify", label: "Spotify", href: "https://open.spotify.com/user/fanxu", text: "What's on repeat right now." },
-  { key: "steam", label: "Steam", href: "https://steamcommunity.com/id/killerx3000/", text: "9,800+ achievements, 110 perfect games." },
-  // On hold for now; to show it, set the href:
-  { key: "anilist", label: "MyAnimeList", href: "https://myanimelist.net/profile/ChenTzer", text: "Everything I've watched and read." },
+  { key: "steam", label: "Steam", href: "https://steamcommunity.com/id/killerx3000/", text: "9,800+ achievements, 110 perfect games.", hidden: "games" },
+  { key: "anilist", label: "MyAnimeList", href: "https://myanimelist.net/profile/ChenTzer", text: "Everything I've watched and read.", hidden: "anime" },
 ];
 
 // Guestbook (Life page), powered by giscus + GitHub Discussions.
@@ -396,13 +439,20 @@ export const analytics = {
 // MyAnimeList username for the live anime/manga stats on the Life page.
 export const myAnimeList = "ChenTzer";
 
-// Google Sheet with Travels, Top 3, Story, Career and Stats (see the README).
+// Hidden content (Life page): items tagged `hidden: "games"` / `hidden: "anime"`, plus the whole
+// Games section (games) and the `top3` / `manga` terminal commands, stay off the site until a
+// visitor types the matching word in the terminal (press ~). Typing it again hides it again.
+// Change the words here; they're visible to anyone reading this public code.
+export const hiddenContent = { games: "games", anime: "anime" };
+
+// Google Sheet with Travels, Top 3, Story, Career, Stats and Games (see the README).
 // While `id` is null the site uses the copies in this file. The sheet, once set up, wins.
 //   id:   from File → Share → Publish to web; the "2PACX-…" part of the link
-//   tabs: each tab's gid (the number after "gid=" in the address bar when that tab is open)
+//   tabs: each tab's gid (the number after "gid=" in the address bar when that tab is open);
+//         a tab left as null uses the copy in this file
 export const sheet = {
   id: "2PACX-1vQMa5_kYQmMmo0BkYRY0m_n6HjzTgtv9O-TYzAMUMxcz01GGR4RXedanIZylhosCA",
-  tabs: { travels: 2112620528, topThree: 524641373, story: 568824744, career: 1999413922, stats: 1807651964 },
+  tabs: { travels: 2112620528, topThree: 524641373, story: 568824744, career: 1999413922, stats: 1807651964, games: 1860375876 },
 };
 
 // Link-preview image (the card shown when the site is shared on LinkedIn, WhatsApp, etc.).

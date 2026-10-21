@@ -3,7 +3,7 @@
 // the same shapes data.js uses, and swap them into data.js's arrays in place, so every section
 // picks them up without knowing where they came from. If the sheet isn't set up, is slow or
 // fails, the site quietly keeps the copies in data.js.
-import { sheet, travels, topThree, story, career, lifeIntro } from "./data.js";
+import { sheet, travels, topThree, story, career, lifeIntro, gameGenres } from "./data.js";
 import { addTranslations } from "./i18n.js";
 
 const LANGS = ["ja", "zh", "ms"];
@@ -157,6 +157,22 @@ function applyStats(rows) {
   }
 }
 
+// ── Games ──
+// One row per game: genre, title, link (Steam store link or app number), note
+// (+ genre_ja/_zh/_ms and note_ja/_zh/_ms). Genres show in the order they first appear.
+function toGenres(rows) {
+  const genres = new Map();
+  for (const r of rows) {
+    if (!r.genre || !r.title) continue;
+    collect(r, "genre");
+    collect(r, "note");
+    if (!genres.has(r.genre)) genres.set(r.genre, { name: r.genre, games: [] });
+    const steam = (String(r.link).match(/app\/(\d+)/) || String(r.link).match(/^(\d+)$/) || [])[1];
+    genres.get(r.genre).games.push({ title: r.title, steam: steam ? Number(steam) : undefined, note: or(r.note) });
+  }
+  return [...genres.values()];
+}
+
 const replace = (arr, items) => { if (items.length) arr.splice(0, arr.length, ...items); };
 
 export async function loadLiveContent() {
@@ -171,6 +187,7 @@ export async function loadLiveContent() {
     tab("story", (rows) => replace(story, toTimeline(rows, story))),
     tab("career", (rows) => replace(career, toTimeline(rows, career))),
     tab("stats", applyStats),
+    tab("games", (rows) => replace(gameGenres, toGenres(rows))),
   ]);
   clearTimeout(timer);
 }

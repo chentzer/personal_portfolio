@@ -127,6 +127,14 @@ function App() {
     return () => window.removeEventListener("langchange", on);
   }, []);
 
+  // Re-render the page when hidden content is unlocked or hidden from the terminal.
+  const [unlocks, setUnlocks] = useState(0);
+  useEffect(() => {
+    const on = () => setUnlocks((n) => n + 1);
+    window.addEventListener("hiddenchange", on);
+    return () => window.removeEventListener("hiddenchange", on);
+  }, []);
+
   useEffect(() => {
     unlock("hello");
     if (PAGE === "life") setTimeout(() => unlock("offclock"), 1500);
@@ -153,8 +161,8 @@ function App() {
     <${Cursor} />
     <${Ambient} />
     <div className="grid-overlay" aria-hidden="true"></div>
-    <${Nav} key=${"nav-" + lang} page=${PAGE} onTerminal=${() => setTerm(true)} onTrophies=${() => setTrophies(true)} />
-    <main key=${"main-" + lang} className="page-enter">
+    <${Nav} key=${"nav-" + lang + "-" + unlocks} page=${PAGE} onTerminal=${() => setTerm(true)} onTrophies=${() => setTrophies(true)} />
+    <main key=${"main-" + lang + "-" + unlocks} className="page-enter">
       ${PAGE === "life" ? html`<${LifePage} />` : html`<${CareerPage} />`}
     </main>
     <${Footer} key=${"foot-" + lang} page=${PAGE} onTrophies=${() => setTrophies(true)} />

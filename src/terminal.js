@@ -2,9 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { html, clean } from "./ui.js";
 import { unlock } from "./achievements.js";
+import { groupFor, toggleGroup, isShown, visible } from "./hidden.js";
 import { profile, career, story, achievements, workProjects, passionProjects, skills, hobbies, contact, elsewhere, topThree } from "./data.js";
 
-const LIFE_IDS = ["intro", "story", "top3", "off-duty", "travel", "elsewhere"];
+const LIFE_IDS = ["intro", "story", "games", "off-duty", "travel", "elsewhere"];
 // Scroll to a section on this page, or open the other page at that section.
 const go = (id = "") => {
   const el = document.getElementById(id);
@@ -14,8 +15,23 @@ const go = (id = "") => {
 };
 const line = (t) => `  [${(clean(t.year) || "----").padEnd(19)}] ${clean(t.title) ? clean(t.title) + " @ " + t.place : t.place}`;
 
+// Where each hidden group shows up once unlocked (see hiddenContent in data.js).
+const WHERE = {
+  games: { life: "Scroll to Games, or type 'goto games'.", career: "It's on the Life page: type 'goto games'." },
+  anime: { life: "Look in Intro, Off-duty and Elsewhere.", career: "It's on the Life page: type 'goto life'." },
+};
+
 function run(cmd, ctx) {
   const [name, ...args] = cmd.trim().split(/\s+/);
+  const group = groupFor(name || "");
+  if (group) {
+    return toggleGroup(group)
+      ? [`Unlocked: ${group}. ${WHERE[group]?.[ctx.page] || ""}`.trim(), `(type ${name.toLowerCase()} again to hide it)`]
+      : [`Hidden: ${group}.`];
+  }
+  // Commands that belong to hidden content act like they don't exist until it's unlocked.
+  const needs = { top3: "games", manga: "anime" }[(name || "").toLowerCase()];
+  if (needs && !isShown(needs)) return [`command not found: ${name}. Type 'help'.`];
   switch ((name || "").toLowerCase()) {
     case "": return [];
     case "help": return [
@@ -27,7 +43,7 @@ function run(cmd, ctx) {
       "  projects     things I've built",
       "  skills       the toolkit",
       "  hobbies      off-duty mode",
-      "  top3         this year's top songs and games",
+      ...(isShown("games") ? ["  top3         this year's top songs and games"] : []),
       "  contact      how to reach me",
       "  goto <id>    jump to a section or page (career, life, projects…)",
       "  warp         engage warp drive",
@@ -43,19 +59,19 @@ function run(cmd, ctx) {
       "Passion projects:", ...passionProjects.map((p) => `  ▸ ${p.title}${clean(p.year) ? " (" + clean(p.year) + ")" : ""}`),
     ];
     case "skills": return skills.map((g) => `  ${g.group.padEnd(11)} ${g.items.join(", ")}`);
-    case "hobbies": return hobbies.map((h) => `  ◆ ${h.title}`);
+    case "hobbies": return visible(hobbies).map((h) => `  ◆ ${h.title}`);
     case "top3": {
       const y = [...topThree].sort((a, b) => b.year - a.year)[0];
       if (!y) return ["Nothing yet."];
       return [`Top 3 · ${y.year}`, ...(y.music || []).map((m, i) => `  ♪ ${i + 1}. ${m.song} (${m.artist})`), ...(y.games || []).map((g, i) => `  ▶ ${i + 1}. ${g.title}`)];
     }
-    case "contact": return [...Object.entries(contact).filter(([, v]) => v), ...elsewhere.filter((e) => e.href).map((e) => [e.key, e.href])].map(([k, v]) => `  ${k.padEnd(10)} ${v}`);
+    case "contact": return [...Object.entries(contact).filter(([, v]) => v), ...visible(elsewhere).filter((e) => e.href).map((e) => [e.key, e.href])].map(([k, v]) => `  ${k.padEnd(10)} ${v}`);
     case "yoasobi": return ["♪ 夜に駆ける (Yoru ni Kakeru), YOASOBI", "The song that started it all. Seen live: Malaysia 2025, Singapore 2026."];
     case "scout": case "kingscout": return ["Be prepared. ⚜ King Scout, Vice President of the Scouts."];
     case "goto": go(args[0]); ctx.close(); return [];
     case "warp": return [ctx.warp() ? "Warp drive engaged. 🚀 (type warp again to disengage)" : "Warp drive disengaged."];
     case "sudo": unlock("sudo"); return ["Nice try. This incident will be reported."];
-    case "ls": return ["career/  about  experience  impact  projects  skills  contact", "life/    intro  story  top3  off-duty  travel  elsewhere"];
+    case "ls": return ["career/  about  experience  impact  projects  skills  contact", `life/    intro  story  ${isShown("games") ? "games  " : ""}off-duty  travel  elsewhere`];
     case "manga": return ["4,700+ chapters and counting. Ask me for a recommendation."];
     case "clear": ctx.clear(); return null;
     case "exit": case "quit": ctx.close(); return null;
@@ -63,7 +79,7 @@ function run(cmd, ctx) {
   }
 }
 
-export function Terminal({ open, onClose, onWarp }) {
+export function Terminal({ open, page, onClose, onWarp }) {
   const [lines, setLines] = useState([
     `LCT-OS 1.0, connected to ${profile.name}`,
     "Type 'help' to see available commands.",
@@ -79,7 +95,7 @@ export function Terminal({ open, onClose, onWarp }) {
 
   const submit = (e) => {
     e.preventDefault();
-    const ctx = { clear: () => setLines([]), close: onClose, warp: onWarp };
+    const ctx = { clear: () => setLines([]), close: onClose, warp: onWarp, page };
     const out = run(value, ctx);
     if (out !== null) setLines((l) => [...l, `› ${value}`, ...out]);
     if (value.trim()) setHist((h) => [value, ...h]);

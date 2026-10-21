@@ -4,7 +4,7 @@ A futuristic personal portfolio built with **React 18 + Three.js**. It needs no 
 
 ## Edit content
 
-**Travels, Top 3, Story, Career and the Life stats** can be edited in a Google Sheet (see below). Everything else lives in **`src/data.js`**: profile, about, achievements, projects, skills, hobbies and contact links. `data.js` also keeps a copy of the sheet's content, which the site falls back to if the sheet can't be reached.
+**Travels, Top 3, Story, Career, the Life stats and the game genres** can be edited in a Google Sheet (see below). Everything else lives in **`src/data.js`**: profile, about, achievements, projects, skills, hobbies and contact links. `data.js` also keeps a copy of the sheet's content, which the site falls back to if the sheet can't be reached.
 Search for `TODO` to find what still needs filling in. Values starting with `TODO` are hidden on the site until replaced.
 
 - **Photo:** put an image in `assets/` and set `profile.photo = "assets/me.jpg"`.
@@ -23,7 +23,7 @@ Then open http://127.0.0.1:5173. This small server turns off caching, so edits a
 
 ## Edit content in Google Sheets
 
-The site reads five tabs of a Google Sheet every time someone visits: **Travels**, **Top 3**, **Story**, **Career** and **Stats**. Edits show up within about 5 minutes, with no commit or deploy. The sheet's **Read me** tab explains every column.
+The site reads six tabs of a Google Sheet every time someone visits: **Travels**, **Top 3**, **Story**, **Career**, **Stats** and **Games**. Edits show up within about 5 minutes, with no commit or deploy. The sheet's **Read me** tab explains every column.
 
 How it works: each tab is published to the web as CSV. `src/live.js` fetches them before the page first renders (waiting at most 2.5 seconds), turns the rows into the same shapes `data.js` uses, and swaps them in. If the sheet isn't set up, is slow or fails, the site uses the copies in `data.js`.
 
@@ -31,6 +31,7 @@ How it works: each tab is published to the web as CSV. `src/live.js` fetches the
 - **Translations:** columns ending in `_ja`, `_zh` and `_ms`. Blank means that language shows the English.
 - **Stats:** `steam` is the perfect-games count. The anime and manga counts are read live from MyAnimeList through the free [Jikan](https://jikan.moe) API (MyAnimeList's own API can't be called from a browser without a key). The sheet's values show when Jikan is down.
 - **Story's "Hello, world"** keeps its code block from `data.js` through its `id` (`hello-world`).
+- **Games:** one row per game: `genre`, `title`, `link` (Steam store link, for the picture and the click-through) and an optional `note`. Each genre becomes a card, in the order the genres first appear. Put each game in only one genre.
 
 **One-time setup**
 1. Upload `Portfolio content.xlsx` (pre-filled with the current content) to Google Drive, open it with **Google Sheets**, and save it as a Google Sheet (**File → Save as Google Sheets**).
@@ -44,7 +45,7 @@ Anything in the sheet is public, the same as the website.
 1. Open **Spotify Wrapped** and **Steam Replay** for the year.
 2. In the sheet's **Top 3** tab, add rows for the new year: three with `type` = `song` (title, artist, Spotify song link) and three with `type` = `game` (title, Steam store link, a short note).
 
-Cover art and game images load automatically, and a year switcher appears once there's more than one year.
+On the Life page the Top 3 opens from the small **Top 3 · year** button in the Games section. Cover art and game images load automatically, and a year switcher appears in the pop-up once there's more than one year.
 
 ## Languages (EN · 日本語 · 中文 · BM)
 
@@ -103,6 +104,7 @@ To redraw it after changing your name, title or tagline: start `py tools/serve.p
 
 - Press <kbd>~</kbd> (or click the `>_` button) to open a hidden terminal. Try `help`, `whoami`, `experience`, `story`, `yoasobi`, `goto life`.
 - Konami code (↑ ↑ ↓ ↓ ← → ← → B A) engages warp drive.
+- **Hidden content:** on the Life page, everything tagged `hidden: "games"` or `hidden: "anime"` in `src/data.js` (stats, hobby cards, Steam/MyAnimeList links), the whole Games section and the `top3` / `manga` terminal commands stay hidden until a visitor types the matching word in the terminal. The words are set in `hiddenContent` in `src/data.js`. Typing a word again hides that content, and a new browser tab starts hidden. The tagline and first intro paragraph have a version for each unlock state (`lifeIntro.tagline` / `paragraphs`).
 - 11 Steam-style achievements unlock as visitors explore. Progress is saved in each visitor's browser; the trophy button in the nav shows the list.
 
 ## Structure
@@ -116,7 +118,7 @@ src/main.js       app root, boot screen, cursor, easter eggs
 src/sections.js   page sections + the two page layouts
 src/scene.js      Three.js background (particle core, rings, stars)
 src/globe.js      travel globe on the Life page
-src/topthree.js   yearly Top 3 songs and games
+src/topthree.js   Games section: favourite genres + the yearly Top 3 pop-up
 src/terminal.js   hidden terminal
 src/achievements.js  Steam-style achievements
 src/github.js     live GitHub contribution graph

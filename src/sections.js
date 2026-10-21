@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Travel } from "./globe.js";
-import { TopThree } from "./topthree.js";
+import { Games } from "./topthree.js";
 import { GitHubActivity } from "./github.js";
 import { Guestbook } from "./guestbook.js";
 import { html, clean, Scramble, TypeCycle, Tilt, SectionHead, Icon, useReveal, CodeBlock } from "./ui.js";
 import { t, LANGS, getLang, setLang } from "./i18n.js";
 import { useAchievementCount, useUnlockOnView } from "./achievements.js";
+import { isShown, visible, pickText } from "./hidden.js";
 import {
   profile, about, career, achievements, workProjects, passionProjects, skills, contact, github,
   lifeIntro, story, scenes, hobbies, elsewhere, guestbook, analytics, myAnimeList,
@@ -32,7 +33,7 @@ export const PAGES = {
     sections: [
       ["intro", "Intro"],
       ["story", "Story"],
-      ["top3", "Top 3"],
+      ["games", "Games", "games"], // hidden until unlocked (see hiddenContent)
       ["off-duty", "Off-duty"],
       ["travel", "Travel"],
       ["elsewhere", "Elsewhere"],
@@ -73,7 +74,7 @@ function TrophyButton({ onOpen }) {
 }
 
 export function Nav({ page, onTerminal, onTrophies }) {
-  const sections = PAGES[page].sections;
+  const sections = PAGES[page].sections.filter(([, , hidden]) => isShown(hidden));
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -152,7 +153,7 @@ export function LifeHero() {
     <div className="hero-inner">
       <div className="status mono"><span className="pulse off"></span>${t("Off the clock")}</div>
       <h1 className="hero-name"><${Scramble} text=${t("Beyond the code")} delay=${500} /></h1>
-      <p className="hero-tagline">${t("Gamer, manga reader, traveller and YOASOBI fan. The parts of me that don't fit on a résumé.")}</p>
+      <p className="hero-tagline">${t(pickText(lifeIntro.tagline))}</p>
       <div className="hero-cta">
         <a className="btn primary" href="#story">${t("Read the story")} <${Icon} name="down" size=${16} /></a>
         <a className="btn" href=${withLang(PAGES.career.href)}>← ${t("Career")}</a>
@@ -199,14 +200,15 @@ function useMalStats(on) {
 
 export function About({ id = "about", index = "01", label = "About", data = about, cta }) {
   useReveal(); // the visitor stat arrives after first render and needs revealing too
-  const visitors = useVisitorCount(data.stats.some((s) => s.visitors));
-  const mal = useMalStats(data.stats.some((s) => s.mal));
+  const shownStats = visible(data.stats);
+  const visitors = useVisitorCount(shownStats.some((s) => s.visitors));
+  const mal = useMalStats(shownStats.some((s) => s.mal));
   const value = (s) => {
     if (s.visitors) return visitors;
     const live = s.mal && mal?.[s.mal];
     return typeof live === "number" && live > 0 ? live.toLocaleString("en-US") : s.value;
   };
-  const stats = data.stats.filter((s) => (s.visitors ? visitors : true));
+  const stats = shownStats.filter((s) => (s.visitors ? visitors : true));
   return html`<section id=${id} className="section">
     <${SectionHead} index=${index} label=${t(label)} title=${t(data.heading)} />
     <div className="about-grid">
@@ -220,7 +222,7 @@ export function About({ id = "about", index = "01", label = "About", data = abou
         <//>
       </div>
       <div className="about-text">
-        ${data.paragraphs.map((p, i) => html`<p key=${i} data-reveal style=${{ "--d": i * 90 + "ms" }}>${t(p)}</p>`)}
+        ${data.paragraphs.map((p, i) => html`<p key=${i} data-reveal style=${{ "--d": i * 90 + "ms" }}>${t(pickText(p))}</p>`)}
         <div className="stats">
           ${stats.map((s, i) => html`<div key=${i} className="stat glass" data-reveal style=${{ "--d": i * 70 + "ms" }}>
             <div className="stat-v">${value(s)}</div><div className="stat-l">${t(s.label)}</div>
@@ -374,7 +376,7 @@ export function Hobbies({ index }) {
   return html`<section id="off-duty" className="section">
     <${SectionHead} index=${index} label=${t("Off-duty")} title=${t("When the laptop closes.")} />
     <div className="hobby-grid">
-      ${hobbies.map((h, i) => html`<${Tilt} key=${h.title} className="hobby glass" data-reveal style=${{ "--d": i * 70 + "ms" }}>
+      ${visible(hobbies).map((h, i) => html`<${Tilt} key=${h.title} className="hobby glass" data-reveal style=${{ "--d": i * 70 + "ms" }}>
         <div className="hobby-icon"><${Icon} name=${h.icon} size=${26} /></div>
         <h3>${t(h.title)}</h3>
         ${clean(h.text) && html`<p>${t(clean(h.text))}</p>`}
@@ -384,7 +386,7 @@ export function Hobbies({ index }) {
 }
 
 export function Elsewhere({ index }) {
-  const items = elsewhere.filter((e) => e.href);
+  const items = visible(elsewhere).filter((e) => e.href);
   return html`<section id="elsewhere" className="section">
     <${SectionHead} index=${index} label=${t("Elsewhere")} title=${t("Find me off the clock.")} />
     <div className="elsewhere-grid">
@@ -440,13 +442,16 @@ export function CareerPage() {
 }
 
 export function LifePage() {
+  // Number the sections in order, skipping Games while it's hidden.
+  let n = 0;
+  const num = () => String(++n).padStart(2, "0");
   return html`
     <${LifeHero} />
-    <${About} id="intro" index="01" label="Intro" data=${lifeIntro} />
-    <${Timeline} id="story" index="02" label="Story" title="The moments that shaped me." items=${story} />
-    <${TopThree} index="03" />
-    <${Hobbies} index="04" />
-    <${Travel} index="05" />
-    <${Elsewhere} index="06" />
-    ${guestbook.categoryId && html`<${Guestbook} index="07" />`}`;
+    <${About} id="intro" index=${num()} label="Intro" data=${lifeIntro} />
+    <${Timeline} id="story" index=${num()} label="Story" title="The moments that shaped me." items=${story} />
+    ${isShown("games") && html`<${Games} index=${num()} />`}
+    <${Hobbies} index=${num()} />
+    <${Travel} index=${num()} />
+    <${Elsewhere} index=${num()} />
+    ${guestbook.categoryId && html`<${Guestbook} index=${num()} />`}`;
 }
