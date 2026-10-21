@@ -311,6 +311,15 @@ export const story = [
     text: "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.",
   },
   {
+    kind: "life",
+    year: "2015",
+    title: "Letting go",
+    place: "High school · Form 3",
+    scene: "rain",
+    text: "After chasing my crush for three years, I finally accepted that the feelings would never be returned. So I decided to work on myself instead: to become a better person, and someone worthy of being in a relationship.",
+    tags: ["Growth"],
+  },
+  {
     id: "hello-world", // the Google Sheet row with this id keeps the code block below
     kind: "life",
     year: "2000",
@@ -333,7 +342,14 @@ export const story = [
 
 // Context backgrounds: when a story entry with `scene: "<name>"` is on screen,
 // the page background, accent colour and 3D particles shift to match it.
+// A scene uses a photo (`image`) or a CSS `background`; `effect: "rain"` adds falling rain.
 export const scenes = {
+  rain: {
+    background: "linear-gradient(180deg, #0a1018 0%, #16212d 55%, #0d141c 100%)", // a grey, overcast night
+    accent: "#9fb6cf",   // rain-cloud blue
+    accent2: "#6f8aa8",
+    effect: "rain",
+  },
   yoasobi: {
     image: "https://i.scdn.co/image/ab67616d0000b273c5716278abba6a103ad13aa7", // 夜に駆ける cover (Spotify CDN)
     accent: "#ff8f9c",   // coral pink from the cover

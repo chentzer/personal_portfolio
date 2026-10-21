@@ -241,6 +241,11 @@ export default {
   "High school": "Sekolah menengah",
   "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.":
     "Menerima anugerah Pengakap Raja, serta berkhidmat sebagai Naib Presiden Pengakap dan ahli Lembaga Pustakawan.",
+  "Letting go": "Melepaskan",
+  "High school · Form 3": "Sekolah menengah · Tingkatan 3",
+  "After chasing my crush for three years, I finally accepted that the feelings would never be returned. So I decided to work on myself instead: to become a better person, and someone worthy of being in a relationship.":
+    "Selepas mengejar orang yang saya minati selama tiga tahun, akhirnya saya terima bahawa perasaan itu tidak akan berbalas. Jadi saya memutuskan untuk memperbaiki diri: menjadi insan yang lebih baik, dan seseorang yang layak untuk berada dalam sebuah hubungan.",
+  "Growth": "Pertumbuhan diri",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "Lahir pada awal alaf baharu dan membesar di Selangor. Di sinilah semuanya bermula.",
 
@@ -302,8 +307,8 @@ export default {
   "9,800+ achievements, 110 perfect games.": "9,800+ pencapaian, 110 game sempurna.",
   "Everything I've watched and read.": "Semua yang pernah saya tonton dan baca.",
   "Leave a message.": "Tinggalkan mesej.",
-  "Say hi, recommend a manga, or tell me where I should travel next. Sign in with GitHub to post.":
-    "Ucap hai, cadangkan manga, atau beritahu saya ke mana patut melancong seterusnya. Log masuk dengan GitHub untuk menulis.",
+  "Say hi, or tell me where I should travel next. Sign in with GitHub to post.":
+    "Ucap hai, atau beritahu saya ke mana patut melancong seterusnya. Log masuk dengan GitHub untuk menulis.",
 
   // ── Achievements ──
   "Achievement unlocked": "Pencapaian dibuka",

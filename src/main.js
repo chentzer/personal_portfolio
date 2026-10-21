@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { createRoot } from "react-dom/client";
-import { html, useReveal } from "./ui.js";
+import { html, useReveal, reduceMotion } from "./ui.js";
 import { startScene } from "./scene.js";
 import { Nav, Footer, CareerPage, LifePage } from "./sections.js";
 import { Terminal } from "./terminal.js";
@@ -43,12 +43,59 @@ function Boot({ done }) {
   </div>`;
 }
 
+// Animated rain for scenes with `effect: "rain"`. Draws only while its scene is on screen;
+// visitors who prefer reduced motion get a single still frame instead.
+function Rain({ on }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!on) return;
+    const still = reduceMotion();
+    const canvas = ref.current;
+    const ctx = canvas.getContext("2d");
+    let w, h, raf;
+    const size = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.width = innerWidth * dpr; h = canvas.height = innerHeight * dpr;
+    };
+    const onResize = () => { size(); if (still) loop(last); };
+    size();
+    window.addEventListener("resize", onResize);
+    // Each drop: position, speed and length; slanted slightly by the wind.
+    const drops = Array.from({ length: Math.round(Math.min(innerWidth, 1600) / 6) }, () => ({
+      x: Math.random() * w, y: Math.random() * h, v: 0.6 + Math.random() * 0.8, l: 0.5 + Math.random() * 0.8,
+    }));
+    const wind = 0.18;
+    let last = performance.now();
+    const loop = (now) => {
+      const dt = Math.min((now - last) / 16.7, 3); last = now;
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = "rgba(190, 210, 235, 0.5)";
+      ctx.lineWidth = 1.3 * Math.max(1, w / innerWidth);
+      ctx.beginPath();
+      const unit = h / 60;
+      for (const d of drops) {
+        d.y += d.v * unit * dt; d.x += d.v * unit * wind * dt;
+        if (d.y > h) { d.y = -unit * 2; d.x = Math.random() * w * 1.1 - w * 0.1; }
+        const len = d.l * unit * 1.6;
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x - len * wind, d.y - len);
+      }
+      ctx.stroke();
+      if (!still) raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", onResize); ctx.clearRect(0, 0, w, h); };
+  }, [on]);
+  return html`<canvas ref=${ref} className=${"ambient-rain" + (on ? " on" : "")}></canvas>`;
+}
+
 // Full-screen context background that fades in while a timeline "scene" is on screen.
+// A scene shows a photo (`image`) or a CSS `background`, and can add an `effect` (rain).
 function Ambient() {
   const [active, setActive] = useState(null);
   useEffect(() => {
     // Preload so the first switch is instant.
-    Object.values(scenes).forEach((sc) => { const i = new Image(); i.src = sc.image; });
+    Object.values(scenes).forEach((sc) => { if (sc.image) { const i = new Image(); i.src = sc.image; } });
     const onScene = (e) => { setActive(e.detail); if (e.detail === "yoasobi") unlock("yoasobi"); };
     window.addEventListener("scenechange", onScene);
     return () => window.removeEventListener("scenechange", onScene);
@@ -71,8 +118,9 @@ function Ambient() {
   return html`
     <div className="ambient" aria-hidden="true">
       ${Object.entries(scenes).map(([name, sc]) => html`<div key=${name}
-        className=${"ambient-layer" + (active === name ? " on" : "")} style=${{ backgroundImage: `url("${sc.image}")` }}></div>`)}
+        className=${"ambient-layer" + (active === name ? " on" : "")} style=${{ backgroundImage: sc.image ? `url("${sc.image}")` : sc.background }}></div>`)}
       <div className="ambient-shade"></div>
+      <${Rain} on=${active && scenes[active]?.effect === "rain"} />
     </div>
     <a className=${"now-playing mono" + (np ? " on" : "")} href=${np?.href || "#"} target="_blank" rel="noopener"
        tabIndex=${np ? 0 : -1} aria-hidden=${!np}>

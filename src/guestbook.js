@@ -35,7 +35,7 @@ export function Guestbook({ index }) {
   }, []);
   return html`<section id="guestbook" className="section">
     <${SectionHead} index=${index} label=${t("Guestbook")} title=${t("Leave a message.")} />
-    <p className="guestbook-lead" data-reveal>${t("Say hi, recommend a manga, or tell me where I should travel next. Sign in with GitHub to post.")}</p>
+    <p className="guestbook-lead" data-reveal>${t("Say hi, or tell me where I should travel next. Sign in with GitHub to post.")}</p>
     <div className="guestbook glass" ref=${ref}></div>
   </section>`;
 }

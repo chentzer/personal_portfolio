@@ -241,6 +241,11 @@ export default {
   "High school": "高校",
   "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.":
     "キングスカウト章を取得し、スカウトの副会長と図書委員を務めました。",
+  "Letting go": "手放すこと",
+  "High school · Form 3": "高校 · フォーム3",
+  "After chasing my crush for three years, I finally accepted that the feelings would never be returned. So I decided to work on myself instead: to become a better person, and someone worthy of being in a relationship.":
+    "3年間追いかけ続けた片思いの相手に、想いが届くことはないとようやく受け入れました。だからこそ、自分を磨くことに決めました。より良い人間になり、恋愛にふさわしい自分になるために。",
+  "Growth": "成長",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "ミレニアムの節目に生まれ、セランゴール州で育ちました。すべてはここから始まりました。",
 
@@ -302,8 +307,8 @@ export default {
   "9,800+ achievements, 110 perfect games.": "実績9,800以上、実績100%のゲーム110本。",
   "Everything I've watched and read.": "これまで観た作品、読んだ作品のすべて。",
   "Leave a message.": "メッセージを残す。",
-  "Say hi, recommend a manga, or tell me where I should travel next. Sign in with GitHub to post.":
-    "あいさつ、おすすめのマンガ、次に行くべき旅先など、気軽に書き込んでください。投稿にはGitHubでのサインインが必要です。",
+  "Say hi, or tell me where I should travel next. Sign in with GitHub to post.":
+    "あいさつや、次に行くべき旅先など、気軽に書き込んでください。投稿にはGitHubでのサインインが必要です。",
 
   // ── Achievements ──
   "Achievement unlocked": "実績解除",

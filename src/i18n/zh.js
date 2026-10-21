@@ -240,6 +240,11 @@ export default {
   "High school": "中学",
   "Earned the King Scout award, and served as Vice President of the Scouts and on the Board of Librarians.":
     "获得皇家童军（King Scout）奖，并担任童军副主席及图书馆理事。",
+  "Letting go": "学会放下",
+  "High school · Form 3": "中学 · 中三",
+  "After chasing my crush for three years, I finally accepted that the feelings would never be returned. So I decided to work on myself instead: to become a better person, and someone worthy of being in a relationship.":
+    "追了三年的暗恋对象，我终于接受了这份感情不会有回应。于是我决定专注于提升自己：成为更好的人，也成为一个值得拥有一段感情的人。",
+  "Growth": "成长",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "在千禧年之际来到这个世界，在雪兰莪长大。一切从这里开始。",
 
@@ -303,8 +308,8 @@ export default {
   "9,800+ achievements, 110 perfect games.": "9,800+ 个成就，110 款全成就游戏。",
   "Everything I've watched and read.": "我看过和读过的一切。",
   "Leave a message.": "留个言吧。",
-  "Say hi, recommend a manga, or tell me where I should travel next. Sign in with GitHub to post.":
-    "打个招呼、推荐一部漫画，或告诉我下一站该去哪里旅行。使用 GitHub 登录即可留言。",
+  "Say hi, or tell me where I should travel next. Sign in with GitHub to post.":
+    "打个招呼，或告诉我下一站该去哪里旅行。使用 GitHub 登录即可留言。",
 
   // ── Achievements ──
   "Achievement unlocked": "成就解锁",
