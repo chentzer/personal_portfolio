@@ -246,6 +246,10 @@ export default {
   "After chasing my crush for three years, I finally accepted that the feelings would never be returned. So I decided to work on myself instead: to become a better person, and someone worthy of being in a relationship.":
     "3年間追いかけ続けた片思いの相手に、想いが届くことはないとようやく受け入れました。だからこそ、自分を磨くことに決めました。より良い人間になり、恋愛にふさわしい自分になるために。",
   "Growth": "成長",
+  "A friend for life": "一生の友",
+  "I joined a club almost by accident, and that one decision led to something extraordinary: I met a friend who has stood by me and supported me ever since. We still talk to this day.":
+    "ほとんど偶然でクラブに入ったことが、思いもよらない出会いにつながりました。それ以来ずっとそばで支えてくれている友人と出会えたのです。今でも連絡を取り合っています。",
+  "Friendship": "友情",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "ミレニアムの節目に生まれ、セランゴール州で育ちました。すべてはここから始まりました。",
 

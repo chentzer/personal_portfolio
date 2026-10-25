@@ -320,6 +320,14 @@ export const story = [
     tags: ["Growth"],
   },
   {
+    kind: "life",
+    year: "2013",
+    title: "A friend for life",
+    place: "High school",
+    text: "I joined a club almost by accident, and that one decision led to something extraordinary: I met a friend who has stood by me and supported me ever since. We still talk to this day.",
+    tags: ["Friendship"],
+  },
+  {
     id: "hello-world", // the Google Sheet row with this id keeps the code block below
     kind: "life",
     year: "2000",

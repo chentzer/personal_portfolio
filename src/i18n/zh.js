@@ -245,6 +245,10 @@ export default {
   "After chasing my crush for three years, I finally accepted that the feelings would never be returned. So I decided to work on myself instead: to become a better person, and someone worthy of being in a relationship.":
     "追了三年的暗恋对象，我终于接受了这份感情不会有回应。于是我决定专注于提升自己：成为更好的人，也成为一个值得拥有一段感情的人。",
   "Growth": "成长",
+  "A friend for life": "一辈子的朋友",
+  "I joined a club almost by accident, and that one decision led to something extraordinary: I met a friend who has stood by me and supported me ever since. We still talk to this day.":
+    "我几乎是误打误撞加入了一个社团，而这个决定带来了意想不到的收获：我遇见了一位从那时起就一直陪伴、支持我的朋友。直到今天，我们依然保持联系。",
+  "Friendship": "友情",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "在千禧年之际来到这个世界，在雪兰莪长大。一切从这里开始。",
 

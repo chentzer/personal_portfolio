@@ -246,6 +246,10 @@ export default {
   "After chasing my crush for three years, I finally accepted that the feelings would never be returned. So I decided to work on myself instead: to become a better person, and someone worthy of being in a relationship.":
     "Selepas mengejar orang yang saya minati selama tiga tahun, akhirnya saya terima bahawa perasaan itu tidak akan berbalas. Jadi saya memutuskan untuk memperbaiki diri: menjadi insan yang lebih baik, dan seseorang yang layak untuk berada dalam sebuah hubungan.",
   "Growth": "Pertumbuhan diri",
+  "A friend for life": "Sahabat sepanjang hayat",
+  "I joined a club almost by accident, and that one decision led to something extraordinary: I met a friend who has stood by me and supported me ever since. We still talk to this day.":
+    "Saya menyertai sebuah kelab hampir secara tidak sengaja, dan keputusan itu membawa kepada sesuatu yang luar biasa: saya bertemu seorang sahabat yang sentiasa bersama dan menyokong saya sejak itu. Sehingga hari ini, kami masih berhubung.",
+  "Friendship": "Persahabatan",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "Lahir pada awal alaf baharu dan membesar di Selangor. Di sinilah semuanya bermula.",
 
