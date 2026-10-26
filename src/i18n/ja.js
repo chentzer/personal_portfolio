@@ -250,6 +250,13 @@ export default {
   "I joined a club almost by accident, and that one decision led to something extraordinary: I met a friend who has stood by me and supported me ever since. We still talk to this day.":
     "ほとんど偶然でクラブに入ったことが、思いもよらない出会いにつながりました。それ以来ずっとそばで支えてくれている友人と出会えたのです。今でも連絡を取り合っています。",
   "Friendship": "友情",
+  "c. 2017": "2017年ごろ",
+  "Hotpot, improvised": "即席の火鍋",
+  "A hotel stay with friends": "友人とのホテル泊",
+  "We decided to have hotpot in our hotel room, then got scared the heat detector would go off, so we carried everything outside. No bowls, so we ate out of cups. No utensils either, so we used plastic ones, which slowly melted into brand-new shapes in the heat.":
+    "ホテルの部屋で火鍋をすることにしましたが、火災報知器が鳴るのが怖くなり、全部を外へ運び出しました。お椀がなかったのでコップで食べ、食器も持ってきていなかったのでプラスチックのものを使ったら、熱でどんどん変な形に溶けていきました。",
+  "Friends": "友人",
+  "Food": "食べ物",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "ミレニアムの節目に生まれ、セランゴール州で育ちました。すべてはここから始まりました。",
 

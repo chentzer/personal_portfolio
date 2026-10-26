@@ -250,6 +250,13 @@ export default {
   "I joined a club almost by accident, and that one decision led to something extraordinary: I met a friend who has stood by me and supported me ever since. We still talk to this day.":
     "Saya menyertai sebuah kelab hampir secara tidak sengaja, dan keputusan itu membawa kepada sesuatu yang luar biasa: saya bertemu seorang sahabat yang sentiasa bersama dan menyokong saya sejak itu. Sehingga hari ini, kami masih berhubung.",
   "Friendship": "Persahabatan",
+  "c. 2017": "Sekitar 2017",
+  "Hotpot, improvised": "Steamboat secara spontan",
+  "A hotel stay with friends": "Menginap di hotel bersama kawan-kawan",
+  "We decided to have hotpot in our hotel room, then got scared the heat detector would go off, so we carried everything outside. No bowls, so we ate out of cups. No utensils either, so we used plastic ones, which slowly melted into brand-new shapes in the heat.":
+    "Kami memutuskan untuk makan steamboat di bilik hotel, tetapi takut pengesan haba berbunyi, jadi kami bawa semuanya ke luar. Tiada mangkuk, jadi kami makan menggunakan cawan. Tiada sudu garpu juga, jadi kami guna yang plastik, dan haba perlahan-lahan mencairkannya menjadi bentuk yang pelik.",
+  "Friends": "Kawan-kawan",
+  "Food": "Makanan",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "Lahir pada awal alaf baharu dan membesar di Selangor. Di sinilah semuanya bermula.",
 

@@ -249,6 +249,13 @@ export default {
   "I joined a club almost by accident, and that one decision led to something extraordinary: I met a friend who has stood by me and supported me ever since. We still talk to this day.":
     "我几乎是误打误撞加入了一个社团，而这个决定带来了意想不到的收获：我遇见了一位从那时起就一直陪伴、支持我的朋友。直到今天，我们依然保持联系。",
   "Friendship": "友情",
+  "c. 2017": "约 2017 年",
+  "Hotpot, improvised": "临时凑合的火锅",
+  "A hotel stay with friends": "和朋友住酒店",
+  "We decided to have hotpot in our hotel room, then got scared the heat detector would go off, so we carried everything outside. No bowls, so we ate out of cups. No utensils either, so we used plastic ones, which slowly melted into brand-new shapes in the heat.":
+    "我们决定在酒店房间里吃火锅，结果怕触发烟雾探测器，只好把东西全搬到外面。没有碗，就用杯子装；没带餐具，就用塑料的，结果被热汤烫得变成了各种奇怪的形状。",
+  "Friends": "朋友",
+  "Food": "美食",
   "Arrived at the turn of the millennium and grew up in Selangor. Where it all started.":
     "在千禧年之际来到这个世界，在雪兰莪长大。一切从这里开始。",
 

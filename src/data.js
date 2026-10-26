@@ -312,6 +312,14 @@ export const story = [
   },
   {
     kind: "life",
+    year: "c. 2017",
+    title: "Hotpot, improvised",
+    place: "A hotel stay with friends",
+    text: "We decided to have hotpot in our hotel room, then got scared the heat detector would go off, so we carried everything outside. No bowls, so we ate out of cups. No utensils either, so we used plastic ones, which slowly melted into brand-new shapes in the heat.",
+    tags: ["Friends", "Food"],
+  },
+  {
+    kind: "life",
     year: "2015",
     title: "Letting go",
     place: "High school · Form 3",
